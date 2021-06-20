@@ -5,13 +5,14 @@ import com.magdy.hospitalsystem.data.*
 import com.magdy.hospitalsystem.network.RetrofitService
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.*
 import javax.inject.Inject
 
 class RetrofitClient @Inject
 constructor(
-    private val retrofitService: RetrofitService,
-) {
+    private val retrofitService: RetrofitService) {
 
     suspend fun registerUser(email: String,
         password: String, fName: String, lName: String,
@@ -54,8 +55,18 @@ constructor(
     }
 
 
-    suspend fun acceptRejectCall ( status :String) = withContext(IO){
-        retrofitService.acceptRejectCall(status)
+    suspend fun acceptRejectCall (id : Int, status :String) = withContext(IO){
+        retrofitService.acceptRejectCall(id,status)
+    }
+
+
+    suspend fun showAllTasks ( date :String) = withContext(IO){
+        retrofitService.showAllTasks(date)
+    }
+
+    suspend fun execution (id : Int
+                           ,note :String) = withContext(IO){
+        retrofitService.execution(id,note)
     }
 
 
@@ -67,6 +78,85 @@ constructor(
     suspend fun getAllCalls (date : String) = withContext(IO){
         retrofitService.getAllCalls(date)
     }
+
+    suspend fun showTask ( id : Int)  = withContext(IO){
+        retrofitService.showTask(id)
+    }
+
+    suspend fun getAllReports (date  :String)  = withContext(IO){
+        retrofitService.getAllReports(date)
+    }
+
+    suspend fun endReport (id : Int) = withContext(IO){
+        retrofitService.endReport(id)
+    }
+    suspend fun attendance (status : String ) = withContext(IO){
+        retrofitService.attendance(status)
+    }
+
+    suspend fun createReport (reportName : String
+                              ,description :String) = withContext(IO){
+        retrofitService.createReport(reportName, description)
+    }
+
+    suspend fun getAllCases()= withContext(IO){
+        retrofitService.getAllCases()
+    }
+
+
+    suspend fun showCase(id: Int)= withContext(IO){
+        retrofitService.showCase(id)
+    }
+
+
+    suspend fun addNurse ( calId : Int
+                          , nurseId : Int ) = withContext(IO){
+        retrofitService.addNurse(calId,nurseId)
+    }
+
+
+    suspend fun requestAnalysis ( callId : Int
+                                             ,userId : Int
+                                             , note : String
+                                             , types : List<String> ) = withContext(IO){
+        retrofitService.requestAnalysis(callId,userId , note,  types)
+    }
+
+
+
+
+    suspend fun uploadMeasurement (caseId : Int
+                                   ,bloodPressure :String
+                                   , sugarAnalysis :String
+                                   , note :String
+                                    ) = withContext(IO){
+        retrofitService.uploadMeasurement(caseId,bloodPressure , sugarAnalysis,  note, "done")
+    }
+
+
+
+    suspend fun showMedicalRecordDoctor ( caseId  : Int) = withContext(IO){
+        retrofitService.showMedicalRecordDoctor(caseId)
+    }
+
+
+    suspend fun showMedicalRecordAnalysis ( caseId  : Int) = withContext(IO){
+        retrofitService.showMedicalRecordAnalysis(caseId)
+    }
+
+
+
+    suspend fun uploadMedicalRecord ( part: MultipartBody.Part
+                                     , call_id: RequestBody
+                                     , status: RequestBody
+                                     , note: RequestBody
+    ) = withContext(IO){
+        retrofitService.uploadMedicalRecord(part, call_id , status , note)
+    }
+
+
+
+
 
 
 

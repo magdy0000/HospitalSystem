@@ -42,6 +42,37 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_splashFragment_to_doctorHomeFragment"
+            app:destination="@id/doctorHomeFragment"
+            app:popUpTo="@+id/app_nav"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+
+            />
+        <action
+            android:id="@+id/action_splashFragment_to_nurseHomeFragment"
+            app:destination="@id/nurseHomeFragment"
+            app:popUpTo="@+id/app_nav"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_splashFragment_to_analysisHomeFragment"
+            app:destination="@id/analysisHomeFragment"
+            app:popUpTo="@+id/app_nav"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -62,6 +93,37 @@
         <action
             android:id="@+id/action_loginFragment_to_hrHomeFragment"
             app:destination="@id/hrHomeFragment"
+            app:popUpTo="@+id/app_nav"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_loginFragment_to_doctorHomeFragment"
+            app:destination="@id/doctorHomeFragment"
+            app:popUpTo="@+id/app_nav"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+
+            />
+        <action
+            android:id="@+id/action_loginFragment_to_nurseHomeFragment"
+            app:destination="@id/nurseHomeFragment"
+            app:popUpTo="@+id/app_nav"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_loginFragment_to_analysisHomeFragment"
+            app:destination="@id/analysisHomeFragment"
             app:popUpTo="@+id/app_nav"
             app:popUpToInclusive="true"
             app:enterAnim="@anim/slide_in_right"
@@ -92,6 +154,30 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_receptionHomeFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_receptionHomeFragment_to_reportsFragment"
+            app:destination="@id/reportsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_receptionHomeFragment_to_attendanceFragment"
+            app:destination="@id/attendanceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/hrHomeFragment"
@@ -110,6 +196,30 @@
         <action
             android:id="@+id/action_hrHomeFragment_to_profileFragment"
             app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_hrHomeFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_hrHomeFragment_to_reportsFragment"
+            app:destination="@id/reportsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_hrHomeFragment_to_attendanceFragment"
+            app:destination="@id/attendanceFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -157,6 +267,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_receptionCallsFragment_to_caseDetailsFragment"
+            app:destination="@id/caseDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/createCallFragment"
@@ -167,6 +285,16 @@
         <action
             android:id="@+id/action_createCallFragment_to_selectDoctorForCallsFragment"
             app:destination="@id/selectDoctorForCallsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_createCallFragment_to_requestCompleteFragment"
+            app:destination="@id/requestCompleteFragment"
+            app:popUpTo="@+id/createCallFragment"
+            app:popUpToInclusive="true"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -198,8 +326,360 @@
     </fragment>
     <fragment
         android:id="@+id/selectDoctorForCallsFragment"
-        android:name="com.magdy.hospitalsystem.ui.reception.SelectDoctorForCallsFragment"
+        android:name="com.magdy.hospitalsystem.ui.common.calls_cases.SelectDoctorForCallsFragment"
         android:label="SelectDoctorForCallsFragment"
         tools:layout="@layout/fragment_select_doctor_for_calls"
+        >
+        <argument android:name="search_key" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestCompleteFragment"
+        android:name="com.magdy.hospitalsystem.ui.reception.RequestCompleteFragment"
+        android:label="RequestCompleteFragment"
+        tools:layout="@layout/fragment_request_complete"
+        >
+        <action
+            android:id="@+id/action_requestCompleteFragment_to_receptionHomeFragment"
+            app:destination="@id/receptionHomeFragment"
+            app:popUpTo="@+id/app_nav"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/caseDetailsFragment"
+        android:name="com.magdy.hospitalsystem.ui.reception.CaseDetailsFragment"
+        android:label="CaseDetailsFragment"
+        tools:layout="@layout/fragment_case_fragment"
+        >
+        <argument
+            android:name="call_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/tasksFragment"
+        android:name="com.magdy.hospitalsystem.ui.common.tasks.TasksFragment"
+        android:label="TasksFragment"
+        tools:layout="@layout/tasks_fragment"
+        >
+        <action
+            android:id="@+id/action_tasksFragment_to_taskDetailsFragment"
+            app:destination="@id/taskDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/taskDetailsFragment"
+        android:name="com.magdy.hospitalsystem.ui.common.tasks.TaskDetailsFragment"
+        android:label="TaskDetailsFragment"
+        tools:layout="@layout/fragment_tasks_details"
+        >
+        <argument
+            android:name="taskId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/reportsFragment"
+        android:name="com.magdy.hospitalsystem.ui.common.reports.ReportsFragment"
+        android:label="ReportsFragment"
+        tools:layout="@layout/fragment_reports"
+        >
+        <action
+            android:id="@+id/action_reportsFragment_to_createReportFragment"
+            app:destination="@id/createReportFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/createReportFragment"
+        android:name="com.magdy.hospitalsystem.ui.common.reports.CreateReportFragment"
+        android:label="CreateReportFragment"
+        tools:layout="@layout/fragment_create_report"
         />
+    <fragment
+        android:id="@+id/attendanceFragment"
+        android:name="com.magdy.hospitalsystem.ui.common.attendance.AttendanceFragment"
+        android:label="AttendanceFragment"
+        tools:layout="@layout/fragment_attendance"
+        />
+    <fragment
+        android:id="@+id/doctorCallFragment"
+        android:name="com.magdy.hospitalsystem.ui.common.calls_cases.AllCallsFragment"
+        android:label="DoctorCallFragment"
+        tools:layout="@layout/fragment_doctor_calls"
+        >
+
+    </fragment>
+    <fragment
+        android:id="@+id/doctorHomeFragment"
+        android:name="com.magdy.hospitalsystem.ui.doctor.DoctorHomeFragment"
+        android:label="DoctorHomeFragment"
+        tools:layout="@layout/fragment_doctor_home"
+        >
+        <action
+            android:id="@+id/action_doctorHomeFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+
+            />
+        <action
+            android:id="@+id/action_doctorHomeFragment_to_doctorCallFragment"
+            app:destination="@id/doctorCallFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+
+            />
+        <action
+            android:id="@+id/action_doctorHomeFragment_to_attendanceFragment"
+            app:destination="@id/attendanceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+
+            />
+        <action
+            android:id="@+id/action_doctorHomeFragment_to_reportsFragment"
+            app:destination="@id/reportsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+
+            />
+        <action
+            android:id="@+id/action_doctorHomeFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+
+            />
+        <action
+            android:id="@+id/action_doctorHomeFragment_to_doctorAllCasesFragment"
+            app:destination="@id/doctorAllCasesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/caseDetailsFragment2"
+        android:name="com.magdy.hospitalsystem.ui.doctor.CaseDetailsFragment"
+        android:label="CaseDetailsFragment"
+        tools:layout="@layout/fragment_case_details"
+        >
+        <argument
+            android:name="caseId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_caseDetailsFragment2_to_selectDoctorForCallsFragment"
+            app:destination="@id/selectDoctorForCallsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+
+            />
+        <action
+            android:id="@+id/action_caseDetailsFragment2_to_requestAnalysisFragment"
+            app:destination="@id/requestAnalysisFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorAllCasesFragment"
+        android:name="com.magdy.hospitalsystem.ui.common.calls_cases.AllCasesFragment"
+        android:label="DoctorAllCasesFragment"
+        tools:layout="@layout/fragment_all_cases_doctor"
+        >
+        <action
+            android:id="@+id/action_doctorAllCasesFragment_to_caseDetailsFragment2"
+            app:destination="@id/caseDetailsFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+
+            />
+        <action
+            android:id="@+id/action_doctorAllCasesFragment_to_nurseCaseDetailsFragment"
+            app:destination="@id/nurseCaseDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_doctorAllCasesFragment_to_analysisCaseDetailsFragment"
+            app:destination="@id/analysisCaseDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/requestAnalysisFragment"
+        android:name="com.magdy.hospitalsystem.ui.doctor.RequestAnalysisFragment"
+        android:label="RequestAnalysisFragment"
+        tools:layout="@layout/fragment_request_analysis"
+        >
+        <action
+            android:id="@+id/action_requestAnalysisFragment_to_selectDoctorForCallsFragment"
+            app:destination="@id/selectDoctorForCallsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <argument
+            android:name="caseId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/nurseHomeFragment"
+        android:name="com.magdy.hospitalsystem.ui.nurse.NurseHomeFragment"
+        android:label="NurseHomeFragment"
+        tools:layout="@layout/fragment_nurse_home"
+        >
+        <action
+            android:id="@+id/action_nurseHomeFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_nurseHomeFragment_to_attendanceFragment"
+            app:destination="@id/attendanceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_nurseHomeFragment_to_reportsFragment"
+            app:destination="@id/reportsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_nurseHomeFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_nurseHomeFragment_to_doctorAllCasesFragment"
+            app:destination="@id/doctorAllCasesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_nurseHomeFragment_to_doctorCallFragment"
+            app:destination="@id/doctorCallFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/nurseCaseDetailsFragment"
+        android:name="com.magdy.hospitalsystem.ui.nurse.NurseCaseDetailsFragment"
+        android:label="NurseCaseDetailsFragment"
+        tools:layout="@layout/fragment_nurse_case_details"
+        >
+        <argument
+            android:name="caseId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/analysisHomeFragment"
+        android:name="com.magdy.hospitalsystem.ui.analysis.AnalysisHomeFragment"
+        android:label="AnalysisHomeFragment"
+        tools:layout="@layout/fragment_analysis_home"
+        >
+        <action
+            android:id="@+id/action_analysisHomeFragment_to_attendanceFragment"
+            app:destination="@id/attendanceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_analysisHomeFragment_to_reportsFragment"
+            app:destination="@id/reportsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_analysisHomeFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_analysisHomeFragment_to_doctorCallFragment"
+            app:destination="@id/doctorCallFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_analysisHomeFragment_to_doctorAllCasesFragment"
+            app:destination="@id/doctorAllCasesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_analysisHomeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/analysisCaseDetailsFragment"
+        android:name="com.magdy.hospitalsystem.ui.analysis.AnalysisCaseDetailsFragment"
+        android:label="AnalysisCaseDetailsFragment"
+        tools:layout="@layout/layout_case_details_analysis"
+        >
+        <argument
+            android:name="caseId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

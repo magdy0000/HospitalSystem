@@ -1,7 +1,6 @@
 package com.magdy.hospitalsystem.ui.hr
 
-import android.view.View
-import android.view.ViewManager
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.magdy.hospitalsystem.network.NetworkState
@@ -11,6 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 @HiltViewModel
 class HrViewModel
 @Inject

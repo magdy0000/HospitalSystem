@@ -12,6 +12,7 @@ import com.magdy.hospitalsystem.R
 import com.magdy.hospitalsystem.data.ModelUser
 import com.magdy.hospitalsystem.databinding.LoginFragmentBinding
 import com.magdy.hospitalsystem.network.NetworkState
+import com.magdy.hospitalsystem.ui.splash.SplashFragmentDirections
 import com.magdy.hospitalsystem.utils.Const
 import com.magdy.hospitalsystem.utils.MySharedPreferences
 import com.magdy.hospitalsystem.utils.ProgressLoading
@@ -46,6 +47,7 @@ class LoginFragment :  BaseFragment() {
         binding.apply {
             btnLogin.setOnClickListener {
                 validation()
+
             }
         }
     }
@@ -64,7 +66,7 @@ class LoginFragment :  BaseFragment() {
                     MySharedPreferences.setUserTOKEN(data.data.access_token)
                     MySharedPreferences.setUserName(data.data.first_name + data.data.last_name)
                     MySharedPreferences.setUserPhone(data.data.mobile)
-                    MySharedPreferences.setUserType(data.data.specialist)
+                    MySharedPreferences.setUserType(data.data.type)
                     MySharedPreferences.setUserId(data.data.id)
 
                     navigateUserToHome(data.data.type)
@@ -82,13 +84,25 @@ class LoginFragment :  BaseFragment() {
     }
 
     private  fun navigateUserToHome (type : String){
+
         if (type == Const.HR){
             navigate(LoginFragmentDirections.actionLoginFragmentToHrHomeFragment())
         }else if (type == Const.RECEPTIONIST){
             navigate(LoginFragmentDirections.actionLoginFragmentToReceptionHomeFragment())
+        }else if (MySharedPreferences.getUserType() == Const.DOCTOR) {
+
+            navigate(LoginFragmentDirections.actionLoginFragmentToDoctorHomeFragment())
+
+        }else if (MySharedPreferences.getUserType() == Const.ANALYSIS) {
+
+            navigate(LoginFragmentDirections.actionLoginFragmentToAnalysisHomeFragment())
+
         }
+        else if (MySharedPreferences.getUserType() == Const.NURSE) {
 
+            navigate(LoginFragmentDirections.actionLoginFragmentToNurseHomeFragment())
 
+        }
 
     }
 

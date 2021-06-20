@@ -38,6 +38,7 @@ class SplashFragment : BaseFragment() {
         Handler(Looper.getMainLooper()).postDelayed({
 
 
+
             if (MySharedPreferences.getUserType() == Const.HR) {
 
                 navigate(SplashFragmentDirections.actionSplashFragmentToHrHomeFragment())
@@ -45,7 +46,22 @@ class SplashFragment : BaseFragment() {
 
                 navigate(SplashFragmentDirections.actionSplashFragmentToReceptionHomeFragment())
 
-            } else {
+            } else if (MySharedPreferences.getUserType() == Const.DOCTOR) {
+
+                navigate(SplashFragmentDirections.actionSplashFragmentToDoctorHomeFragment())
+
+            }
+            else if (MySharedPreferences.getUserType() == Const.NURSE) {
+
+                navigate(SplashFragmentDirections.actionSplashFragmentToNurseHomeFragment())
+
+            }
+            else if (MySharedPreferences.getUserType() == Const.ANALYSIS) {
+
+                navigate(SplashFragmentDirections.actionSplashFragmentToAnalysisHomeFragment())
+
+            }
+            else {
                 navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
             }
 

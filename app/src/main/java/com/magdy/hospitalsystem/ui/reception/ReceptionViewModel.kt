@@ -64,19 +64,41 @@ class ReceptionViewModel
     val logoutCallLiveData get() = _logoutCallLiveData
 
     fun logoutCall(id : Int) {
-        _createCallLiveData.postValue(NetworkState.LOADING)
+        _logoutCallLiveData.postValue(NetworkState.LOADING)
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val data = retrofitClient.logoutCall(id)
                 if (data.status == 1) {
-                    _createCallLiveData.postValue(NetworkState.getLoaded(data))
+                    _logoutCallLiveData.postValue(NetworkState.getLoaded(data))
                 } else {
-                    _createCallLiveData.postValue(NetworkState.getErrorMessage(data.message))
+                    _logoutCallLiveData.postValue(NetworkState.getErrorMessage(data.message))
 
                 }
             } catch (ex: Exception) {
                 ex.printStackTrace()
-                _createCallLiveData.postValue(NetworkState.getErrorMessage(ex))
+                _logoutCallLiveData.postValue(NetworkState.getErrorMessage(ex))
+            }
+        }
+    }
+
+
+    private val _showCallLiveData = SingleLiveEvent<NetworkState>()
+    val showCallLiveData get() = _showCallLiveData
+
+    fun showCall(id : Int) {
+        _showCallLiveData.postValue(NetworkState.LOADING)
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val data = retrofitClient.showCall(id)
+                if (data.status == 1) {
+                    _showCallLiveData.postValue(NetworkState.getLoaded(data))
+                } else {
+                    _showCallLiveData.postValue(NetworkState.getErrorMessage(data.message))
+
+                }
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+                _showCallLiveData.postValue(NetworkState.getErrorMessage(ex))
             }
         }
     }

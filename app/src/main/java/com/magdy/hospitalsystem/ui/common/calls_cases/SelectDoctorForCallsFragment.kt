@@ -1,4 +1,4 @@
-package com.magdy.hospitalsystem.ui.reception
+package com.magdy.hospitalsystem.ui.common.calls_cases
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,6 @@ import com.magdy.hospitalsystem.adapters.AdapterRecyclerSelectDoctor
 import com.magdy.hospitalsystem.base.BaseFragment
 import com.magdy.hospitalsystem.data.ModelAllUser
 import com.magdy.hospitalsystem.data.UsersData
-import com.magdy.hospitalsystem.databinding.FragmentCreateCallBinding
 import com.magdy.hospitalsystem.databinding.FragmentSelectDoctorForCallsBinding
 import com.magdy.hospitalsystem.network.NetworkState
 import com.magdy.hospitalsystem.ui.hr.HrViewModel
@@ -26,7 +25,7 @@ class SelectDoctorForCallsFragment : BaseFragment() {
     private var _binding  : FragmentSelectDoctorForCallsBinding?= null
     private val binding get() = _binding!!
 
-    private val receptionViewModel : ReceptionViewModel by viewModels()
+
     private val adapterRecyclerSelectDoctor : AdapterRecyclerSelectDoctor
                                      by lazy { AdapterRecyclerSelectDoctor() }
 
@@ -45,10 +44,11 @@ class SelectDoctorForCallsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSelectDoctorForCallsBinding.bind(view)
 
+        val searchKey = SelectDoctorForCallsFragmentArgs.fromBundle(requireArguments()).searchKey
         onClicks()
         observers()
 
-        hrViewModel.getAllUsers(Const.DOCTOR,"")
+        hrViewModel.getAllUsers(searchKey,"")
     }
 
     private fun observers() {

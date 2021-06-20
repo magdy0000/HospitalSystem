@@ -25,7 +25,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class EmployeeFragment  :BaseFragment() {
 
-
     private var _binding : FragmentEmployeeBinding?= null
     private val binding get() = _binding!!
     private val typesList = ArrayList<String>()
@@ -76,9 +75,7 @@ class EmployeeFragment  :BaseFragment() {
             btnBack.setOnClickListener {
                 myActivity?.onBackPressed()
             }
-
         }
-
     }
 
     private fun onClicks() {

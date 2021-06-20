@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import com.magdy.hospitalsystem.R
 import com.magdy.hospitalsystem.base.BaseFragment
 import com.magdy.hospitalsystem.databinding.FragmentHomeHrBinding
+import com.magdy.hospitalsystem.ui.reception.ReceptionHomeFragmentDirections
 import com.magdy.hospitalsystem.utils.MySharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,6 +41,11 @@ class HrHomeFragment : BaseFragment() {
         binding.apply {
             textType.text = MySharedPreferences.getUserType()
             textUserName.text  = MySharedPreferences.getUserName()
+
+            cardAttendance.setOnClickListener {
+
+                navigate(HrHomeFragmentDirections.actionHrHomeFragmentToAttendanceFragment())
+            }
 
 
             cardEmploye.setOnClickListener {

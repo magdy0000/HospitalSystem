@@ -7,6 +7,7 @@ import com.magdy.hospitalsystem.network.RetrofitClient
 import com.magdy.hospitalsystem.network.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,8 +16,11 @@ class LoginViewModel
 @Inject constructor(private val retrofitClient: RetrofitClient) : ViewModel() {
 
 
+
+
     private val _loginLiveData = SingleLiveEvent<NetworkState>()
     val loginLiveData get() = _loginLiveData
+
 
     fun login(
         email: String,
@@ -25,11 +29,10 @@ class LoginViewModel
     ) {
         _loginLiveData.postValue(NetworkState.LOADING)
         viewModelScope.launch(Dispatchers.IO) {
+
             try {
-                val data = retrofitClient.login(
-                    email,
-                    password,
-                    deviceToken)
+                val data = retrofitClient.login(email, password, deviceToken)
+
                 if (data.status == 1) {
                     _loginLiveData.postValue(NetworkState.getLoaded(data))
                 } else {

@@ -42,14 +42,30 @@ class ReceptionHomeFragment : BaseFragment() {
     }
     private fun onClicks (){
 
-        binding.cardCalls.setOnClickListener {
-            navigate(ReceptionHomeFragmentDirections.actionReceptionHomeFragmentToReceptionCallsFragment())
+        binding.apply {
+            cardCalls.setOnClickListener {
+                navigate(ReceptionHomeFragmentDirections.actionReceptionHomeFragmentToReceptionCallsFragment())
+            }
+            cardAttendance.setOnClickListener {
+
+                navigate(ReceptionHomeFragmentDirections.actionReceptionHomeFragmentToAttendanceFragment())
+            }
+
+           cardProfile.setOnClickListener {
+                navigate(ReceptionHomeFragmentDirections
+                    .actionReceptionHomeFragmentToProfileFragment(true , MySharedPreferences.getUserId()))
+            }
+
+            cardTasks.setOnClickListener {
+                navigate(ReceptionHomeFragmentDirections.actionReceptionHomeFragmentToTasksFragment())
+            }
+
+            cardReports.setOnClickListener {
+
+                navigate(ReceptionHomeFragmentDirections.actionReceptionHomeFragmentToReportsFragment())
+            }
         }
 
-        binding.cardProfile.setOnClickListener {
-            navigate(ReceptionHomeFragmentDirections
-                .actionReceptionHomeFragmentToProfileFragment(true , MySharedPreferences.getUserId()))
-        }
     }
 
 

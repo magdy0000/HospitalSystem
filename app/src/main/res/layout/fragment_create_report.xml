@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_semibold"
+        android:gravity="center"
+        android:text="@string/create_report"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:src="@drawable/ic_back"
+        android:padding="@dimen/_3sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/_8sdp"
+        />
+
+    <EditText
+        android:id="@+id/edit_report_tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:background="@drawable/edit_shape_trans"
+        android:hint="@string/report_tittle"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:padding="@dimen/_12ssp"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back"
+        />
+
+    <EditText
+        android:id="@+id/edit_report_description"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:background="@drawable/edit_shape_trans"
+        android:hint="@string/report_description"
+        android:textColor="@color/black"
+        android:padding="@dimen/_12ssp"
+        android:textSize="@dimen/_12ssp"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@+id/edit_report_tittle"
+        />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_create_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/cairo_bold"
+        android:paddingVertical="@dimen/_8sdp"
+        android:text="@string/create_report"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp"
+        app:cornerRadius="@dimen/_5sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

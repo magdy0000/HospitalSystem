@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.magdy.hospitalsystem.R
 import com.magdy.hospitalsystem.adapters.AdapterRecyclerAllCalls
+import com.magdy.hospitalsystem.adapters.AdapterRecyclerSelectDoctor
 import com.magdy.hospitalsystem.base.BaseFragment
 import com.magdy.hospitalsystem.data.CallsData
 import com.magdy.hospitalsystem.data.ModelAllCalls
@@ -109,6 +110,13 @@ class ReceptionCallsFragment : BaseFragment(){
             btnAddCall.setOnClickListener {
                 navigate(ReceptionCallsFragmentDirections.actionReceptionCallsFragmentToCreateCallFragment())
             }
+        }
+
+        adapterRecyclerAllCalls.onUserClick = object  : AdapterRecyclerAllCalls.OnUserClick{
+            override fun onClick(id: Int) {
+                navigate(ReceptionCallsFragmentDirections.actionReceptionCallsFragmentToCaseDetailsFragment(id))
+            }
+
         }
 
     }

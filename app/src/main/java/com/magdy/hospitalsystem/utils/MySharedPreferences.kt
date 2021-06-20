@@ -91,7 +91,7 @@ object MySharedPreferences {
     }
 
     fun getUserId ():Int{
-        return getSharedPreferences().getInt(USER_ID , 0)!!
+        return getSharedPreferences().getInt(USER_ID , 0)
 
 
     }

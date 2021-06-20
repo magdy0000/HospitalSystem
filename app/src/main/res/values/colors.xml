@@ -10,11 +10,13 @@
     <color name="blue_calls">#5F9EDC</color>
     <color name="green">#5FDC89</color>
     <color name="dark_gray">#828282</color>
+    <color name="light_gray">#F2F2F2</color>
     <color name="gray">#D6D6D6</color>
     <color name="purple">#915FDC</color>
     <color name="light_blue">#5FDCDC</color>
     <color name="main_color">#22C7B8</color>
     <color name="orange">#DC915F</color>
-
+    <color name="red">#BD1010</color>
     <color name="profile_color">#20CCBC</color>
+    <color name="dark_orange">#F36D13</color>
 </resources>

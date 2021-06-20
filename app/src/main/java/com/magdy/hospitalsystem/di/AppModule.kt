@@ -29,7 +29,7 @@ object AppModule {
     fun provideRetrofit(): RetrofitService {
         val client = OkHttpClient.Builder()
             .connectTimeout(50, TimeUnit.SECONDS)
-            .writeTimeout(50, TimeUnit.SECONDS)
+            .writeTimeout(150, TimeUnit.SECONDS)
             .readTimeout(50, TimeUnit.SECONDS)
             .callTimeout(50, TimeUnit.SECONDS)
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))

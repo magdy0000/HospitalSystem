@@ -96,7 +96,6 @@
         android:layout_marginHorizontal="@dimen/_12sdp"
         android:background="@drawable/edit_shape_trans"
         android:hint="@string/case_description"
-        android:maxLines="1"
         android:textColor="@color/black"
         android:padding="@dimen/_12ssp"
         android:textSize="@dimen/_12ssp"

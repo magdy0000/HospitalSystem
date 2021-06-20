@@ -46,6 +46,7 @@ class RegisterNewEmployeeFragment  :BaseFragment() {
     }
 
     private fun onClicks() {
+
         startDateSetListener =
             DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
 
