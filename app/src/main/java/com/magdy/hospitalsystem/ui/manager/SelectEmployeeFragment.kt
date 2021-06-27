@@ -1,54 +1,59 @@
-package com.magdy.hospitalsystem.ui.hr
+package com.magdy.hospitalsystem.ui.manager
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.magdy.hospitalsystem.R
 import com.magdy.hospitalsystem.adapters.AdapterRecyclerEmployee
+import com.magdy.hospitalsystem.adapters.AdapterRecyclerSelectDoctor
 import com.magdy.hospitalsystem.adapters.AdapterRecyclerTypes
 import com.magdy.hospitalsystem.base.BaseFragment
 import com.magdy.hospitalsystem.data.ModelAllUser
-import com.magdy.hospitalsystem.data.ModelCreation
-import com.magdy.hospitalsystem.data.ModelUser
 import com.magdy.hospitalsystem.data.UsersData
 import com.magdy.hospitalsystem.databinding.FragmentEmployeeBinding
-import com.magdy.hospitalsystem.databinding.FragmentHomeHrBinding
+import com.magdy.hospitalsystem.databinding.FragmentSelectEmployeeBinding
 import com.magdy.hospitalsystem.network.NetworkState
+import com.magdy.hospitalsystem.ui.hr.EmployeeFragmentDirections
+import com.magdy.hospitalsystem.ui.hr.HrViewModel
 import com.magdy.hospitalsystem.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EmployeeFragment  :BaseFragment() {
+class SelectEmployeeFragment:  BaseFragment() {
 
-    private var _binding : FragmentEmployeeBinding?= null
+
+    private var _binding : FragmentSelectEmployeeBinding?= null
     private val binding get() = _binding!!
-    private val typesList = ArrayList<String>()
-    private val adapterRecyclerTypes :AdapterRecyclerTypes by lazy { AdapterRecyclerTypes() }
     private val hrViewModel : HrViewModel by viewModels()
     private var type = "All"
-    private val adapterRecyclerEmployee : AdapterRecyclerEmployee by lazy { AdapterRecyclerEmployee() }
+    private val typesList = ArrayList<String>()
+    private val adapterRecyclerTypes : AdapterRecyclerTypes
+              by lazy { AdapterRecyclerTypes() }
 
+    private var doctorId = 0
+    private var doctorName = ""
+    private val adapterRecyclerSelectDoctor : AdapterRecyclerSelectDoctor
+            by lazy { AdapterRecyclerSelectDoctor() }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_employee , container , false)
+        return inflater.inflate(R.layout.fragment_select_employee , container , false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentEmployeeBinding.bind(view)
+        _binding = FragmentSelectEmployeeBinding.bind(view)
 
         hrViewModel.getAllUsers(type,"")
         initView()
         onClicks()
         observers()
     }
-
     private fun initView() {
 
         binding.apply {
@@ -59,23 +64,13 @@ class EmployeeFragment  :BaseFragment() {
             typesList.add(Const.RECEPTIONIST)
             typesList.add(Const.MANAGER)
             typesList.add(Const.HR)
-            if (MySharedPreferences.getUserType() != Const.HR){
-                btnAddUser.visibilityGone()
-            }
+
 
             adapterRecyclerTypes.list = typesList
             recyclerTypesTaps.adapter = adapterRecyclerTypes
 
-            btnSearch.setOnClickListener {
-                hrViewModel.getAllUsers(type  , editSearch.text.toString())
-            }
 
-            btnAddUser.setOnClickListener {
-                navigate(EmployeeFragmentDirections.actionEmployeeFragmentToRegisterNewEmployeeFragment())
-            }
-            btnBack.setOnClickListener {
-                myActivity?.onBackPressed()
-            }
+
         }
     }
 
@@ -83,25 +78,41 @@ class EmployeeFragment  :BaseFragment() {
 
         adapterRecyclerTypes.onTapClick = object  :AdapterRecyclerTypes.OnTapClick{
             override fun onClick(type: String) {
-               this@EmployeeFragment.type = type
-                hrViewModel.getAllUsers(this@EmployeeFragment.type , binding.editSearch.text.toString())
+                this@SelectEmployeeFragment.type = type
+                hrViewModel.getAllUsers(this@SelectEmployeeFragment.type , binding.editSearch.text.toString())
             }
         }
 
-        adapterRecyclerEmployee.onUserClick = object  : AdapterRecyclerEmployee.OnUserClick{
-            override fun onClick(id: Int) {
-                navigate(EmployeeFragmentDirections.actionEmployeeFragmentToProfileFragment(false,id))
+        adapterRecyclerSelectDoctor.onUserClick = object  : AdapterRecyclerSelectDoctor.OnUserClick{
+            override fun onClick(id: Int, name: String) {
+                doctorId = id
+                doctorName = name
             }
 
-            override fun onCall(id: Int) {
-                hrViewModel.sendCallManager(id)
+        }
+
+        binding.apply {
+
+
+            btnSelectEmployee.setOnClickListener {
+                if (doctorId ==0 ){
+                    showToast(getString(R.string.select_doctor_warn))
+                    return@setOnClickListener
+                }
+                findNavController().previousBackStackEntry?.savedStateHandle?.set("doctorId", doctorId)
+                findNavController().previousBackStackEntry?.savedStateHandle?.set("doctorName", doctorName)
+                findNavController().popBackStack()
 
             }
 
-
+            btnBack.setOnClickListener {
+                myActivity?.onBackPressed()
+            }
+            btnSearch.setOnClickListener {
+                hrViewModel.getAllUsers(Const.DOCTOR,editSearch.text.toString())
+            }
         }
     }
-
 
     private fun observers (){
         hrViewModel.getAllUsersLiveData.observe(this ,{
@@ -113,8 +124,8 @@ class EmployeeFragment  :BaseFragment() {
 
                     val data = it.data as ModelAllUser
 
-                    adapterRecyclerEmployee.list = data.data as ArrayList<UsersData>
-                    binding.recyclerEmployee.adapter = adapterRecyclerEmployee
+                    adapterRecyclerSelectDoctor.list = data.data as ArrayList<UsersData>
+                    binding.recyclerEmployee.adapter = adapterRecyclerSelectDoctor
                     ProgressLoading.dismiss()
 
                 }
@@ -124,34 +135,10 @@ class EmployeeFragment  :BaseFragment() {
                 }
             }
         })
-
-        hrViewModel.sendCallManagerLiveData.observe(this ,{
-            when (it.status) {
-                NetworkState.Status.RUNNING -> {
-                    ProgressLoading.show(requireActivity())
-                }
-                NetworkState.Status.SUCCESS -> {
-
-                    val data = it.data as ModelCreation
-
-                    showToast(data.message)
-                   ProgressLoading.dismiss()
-
-                }
-                else -> {
-                    ProgressLoading.dismiss()
-                    showToast(it.msg)
-                }
-            }
-        })
-
     }
-
-
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        _binding= null
     }
-
 
 }

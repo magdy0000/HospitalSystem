@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -130,7 +131,10 @@ class RegisterNewEmployeeFragment  :BaseFragment() {
                 editAddress.error = getString(R.string.required)
             }else if (email == ""){
                 editEmail.error = getString(R.string.required)
-            }else if (password == ""){
+            }else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                binding.editEmail.error = getString(R.string.wrong_email_address)
+            }
+            else if (password == ""){
                 editPassword.error = getString(R.string.required)
             }else{
                 hrViewModel.createNewUser(email

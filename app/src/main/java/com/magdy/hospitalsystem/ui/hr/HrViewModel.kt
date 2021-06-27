@@ -81,4 +81,25 @@ constructor (private val retrofitClient: RetrofitClient) : ViewModel() {
             }
         }
     }
+
+    private val _sendCallManagerLiveData = SingleLiveEvent<NetworkState>()
+    val sendCallManagerLiveData get() = _sendCallManagerLiveData
+
+    fun sendCallManager(id: Int) {
+        _sendCallManagerLiveData.postValue(NetworkState.LOADING)
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val data = retrofitClient.sendCallManager(id, "Come to my office")
+                if (data.status == 1) {
+                    _sendCallManagerLiveData.postValue(NetworkState.getLoaded(data))
+                } else {
+                    _sendCallManagerLiveData.postValue(NetworkState.getErrorMessage(data.message))
+
+                }
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+                _sendCallManagerLiveData.postValue(NetworkState.getErrorMessage(ex))
+            }
+        }
+    }
 }

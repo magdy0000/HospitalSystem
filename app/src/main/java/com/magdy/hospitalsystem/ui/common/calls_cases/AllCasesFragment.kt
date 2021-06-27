@@ -46,7 +46,6 @@ class AllCasesFragment : BaseFragment() {
 
     private fun observers() {
         viewModel.allCasesLiveData.observe(this ,{
-
             when (it.status) {
                 NetworkState.Status.RUNNING -> {
                     ProgressLoading.show(requireActivity())
@@ -54,12 +53,9 @@ class AllCasesFragment : BaseFragment() {
                 NetworkState.Status.SUCCESS -> {
 
                     val data = it.data as ModelAllCases
-
                     adapterRecyclerAllCases.list  = data.data as ArrayList<CasesData>
                     binding.recyclerDoctorCases.adapter =adapterRecyclerAllCases
-
                     ProgressLoading.dismiss()
-
                 }
                 else -> {
                     ProgressLoading.dismiss()
@@ -77,12 +73,11 @@ class AllCasesFragment : BaseFragment() {
         adapterRecyclerAllCases.onShowClick = object : AdapterRecyclerAllCases.OnShowClick{
             override fun show(id: Int) {
 
-                if (MySharedPreferences.getUserType() == Const.DOCTOR) {
-                    navigate(
-                        AllCasesFragmentDirections.actionDoctorAllCasesFragmentToCaseDetailsFragment2(
-                            id
-                        )
-                    )
+                if (MySharedPreferences.getUserType() == Const.DOCTOR
+                    || MySharedPreferences.getUserType() == Const.MANAGER) {
+
+                    navigate(AllCasesFragmentDirections.actionDoctorAllCasesFragmentToCaseDetailsFragment2(id))
+
                 }else if (MySharedPreferences.getUserType() == Const.NURSE){
                     navigate(AllCasesFragmentDirections
                         .actionDoctorAllCasesFragmentToNurseCaseDetailsFragment(id))

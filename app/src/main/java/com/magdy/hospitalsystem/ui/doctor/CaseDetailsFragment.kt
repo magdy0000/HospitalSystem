@@ -18,33 +18,47 @@ import com.magdy.hospitalsystem.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CaseDetailsFragment  : BaseFragment() {
+class CaseDetailsFragment : BaseFragment() {
 
 
-    private var _binding  : FragmentCaseDetailsBinding?= null
+    private var _binding: FragmentCaseDetailsBinding? = null
     private val binding get() = _binding!!
 
     private var nurseName = ""
-    private val doctorViewModel  : DoctorViewModel by viewModels()
+    private val doctorViewModel: DoctorViewModel by viewModels()
     private var caseId = 0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_case_details , container , false)
+        return inflater.inflate(R.layout.fragment_case_details, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentCaseDetailsBinding.bind(view)
 
+        binding.textView4.setOnClickListener {
 
-         caseId = CaseDetailsFragmentArgs.fromBundle(requireArguments()).caseId
+        }
+        caseId = CaseDetailsFragmentArgs.fromBundle(requireArguments()).caseId
 
         doctorViewModel.showCase(caseId)
         doctorViewModel.showMedicalRecordDoctor(caseId)
         onClicks()
         observers()
+        initView()
+    }
+
+    private fun initView() {
+        binding.apply {
+            if (MySharedPreferences.getUserType() == Const.MANAGER) {
+                layoutCaseDetails.btnAddNurse.visibilityGone()
+                layoutCaseDetails.btnRequest.visibilityGone()
+            }
+
+        }
     }
 
     private fun observers() {
@@ -53,16 +67,24 @@ class CaseDetailsFragment  : BaseFragment() {
             ?.observe(
                 viewLifecycleOwner
             ) { id ->
-               doctorViewModel.addNurse(caseId,  id)
+
+                if (id != 0 ) {
+
+                    doctorViewModel.addNurse(caseId, id)
+                    findNavController().currentBackStackEntry?.savedStateHandle?.set("doctorId", 0)
+
+
+                }
             }
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>("doctorName")
             ?.observe(
-                viewLifecycleOwner) { result ->
+                viewLifecycleOwner
+            ) { result ->
 
                 nurseName = result
-                binding.layoutCaseDetails.textPatientNurse.text = "dasd"
+
             }
-        doctorViewModel.showCaseLiveData.observe(this ,{
+        doctorViewModel.showCaseLiveData.observe(this, {
             when (it.status) {
                 NetworkState.Status.RUNNING -> {
                     ProgressLoading.show(requireActivity())
@@ -74,7 +96,7 @@ class CaseDetailsFragment  : BaseFragment() {
 
                     binding.layoutMedicalMeasurement.apply {
                         data.data.apply {
-                            textDate.text=created_at
+                            textDate.text = created_at
                             textDetails.text = measurement_note
                             textBloodPressure.text = blood_pressure
                             textSuger.text = sugar_analysis
@@ -87,19 +109,19 @@ class CaseDetailsFragment  : BaseFragment() {
                     binding.layoutCaseDetails.apply {
                         data.data.apply {
 
-                            textPatientAge.text = age +" "+ getString(R.string.years)
+                            textPatientAge.text = age + " " + getString(R.string.years)
                             textPatientDate.text = created_at
                             textPatientPhone.text = phone
                             textPatientName.text = patient_name
-                            textPatientDesc.text=  description
-                            textPatientStatus.text= status
+                            textPatientDesc.text = description
+                            textPatientStatus.text = status
                             textPatientNurse.text = nurse_id
                             textPatientDoctor.text = doctor_id
 
 
-                            if (status== Const.STATUS_LOGOUT){
+                            if (status == Const.STATUS_LOGOUT) {
                                 imageCondition.setImageResource(R.drawable.ic_check)
-                            }else{
+                            } else {
                                 imageCondition.setImageResource(R.drawable.ic_delay)
 
                             }
@@ -116,7 +138,7 @@ class CaseDetailsFragment  : BaseFragment() {
             }
         })
 
-        doctorViewModel.showMedicalRecordDoctor.observe(this ,{
+        doctorViewModel.showMedicalRecordDoctor.observe(this, {
             when (it.status) {
                 NetworkState.Status.RUNNING -> {
                     ProgressLoading.show(requireActivity())
@@ -131,7 +153,7 @@ class CaseDetailsFragment  : BaseFragment() {
                             textDetails.text = note
 
                             Glide.with(myContext!!).load(image).into(imageMedialRecord)
-                            textUserName.text = user.first_name+" " + user.last_name
+                            textUserName.text = user.first_name + " " + user.last_name
                         }
 
                     }
@@ -140,12 +162,12 @@ class CaseDetailsFragment  : BaseFragment() {
                 }
                 else -> {
                     ProgressLoading.dismiss()
-                    showToast(it.msg)
+
                 }
             }
         })
 
-        doctorViewModel.addNurseLiveData.observe(this ,{
+        doctorViewModel.addNurseLiveData.observe(this, {
 
             when (it.status) {
                 NetworkState.Status.RUNNING -> {
@@ -190,37 +212,53 @@ class CaseDetailsFragment  : BaseFragment() {
                 )
             }
             btnCase.setOnClickListener {
-                btnMedicalRecord.background = ContextCompat.getDrawable(myContext!!,R.drawable.rounded_gray_strock)
+                btnMedicalRecord.background =
+                    ContextCompat.getDrawable(myContext!!, R.drawable.rounded_gray_strock)
                 binding.apply {
                     layoutCaseDetails.layoutCaseDetails.visibilityVisible()
                     layoutMedicalMeasurement.parentLayoutMedicalMeasurement.visibilityGone()
                     layoutMedicalRecord.parentMedicalRecordLayout.visibilityGone()
                 }
-                btnMedicalMeasurement.background = ContextCompat.getDrawable(myContext!!,R.drawable.rounded_gray_strock)
-                btnCase.setBackgroundColor(ContextCompat.getColor(myContext!!,R.color.main_color))
+                btnMedicalMeasurement.background =
+                    ContextCompat.getDrawable(myContext!!, R.drawable.rounded_gray_strock)
+                btnCase.setBackgroundColor(ContextCompat.getColor(myContext!!, R.color.main_color))
 
             }
             btnMedicalMeasurement.setOnClickListener {
-                btnCase.background = ContextCompat.getDrawable(myContext!!,R.drawable.rounded_gray_strock)
+                btnCase.background =
+                    ContextCompat.getDrawable(myContext!!, R.drawable.rounded_gray_strock)
 
                 binding.apply {
                     layoutCaseDetails.layoutCaseDetails.visibilityGone()
                     layoutMedicalMeasurement.parentLayoutMedicalMeasurement.visibilityVisible()
                     layoutMedicalRecord.parentMedicalRecordLayout.visibilityGone()
                 }
-                btnMedicalRecord.background = ContextCompat.getDrawable(myContext!!,R.drawable.rounded_gray_strock)
-                btnMedicalMeasurement.setBackgroundColor(ContextCompat.getColor(myContext!!,R.color.main_color))
+                btnMedicalRecord.background =
+                    ContextCompat.getDrawable(myContext!!, R.drawable.rounded_gray_strock)
+                btnMedicalMeasurement.setBackgroundColor(
+                    ContextCompat.getColor(
+                        myContext!!,
+                        R.color.main_color
+                    )
+                )
 
             }
             btnMedicalRecord.setOnClickListener {
-                btnCase.background = ContextCompat.getDrawable(myContext!!,R.drawable.rounded_gray_strock)
+                btnCase.background =
+                    ContextCompat.getDrawable(myContext!!, R.drawable.rounded_gray_strock)
                 binding.apply {
                     layoutCaseDetails.layoutCaseDetails.visibilityGone()
                     layoutMedicalMeasurement.parentLayoutMedicalMeasurement.visibilityGone()
                     layoutMedicalRecord.parentMedicalRecordLayout.visibilityVisible()
                 }
-                btnMedicalMeasurement.background = ContextCompat.getDrawable(myContext!!,R.drawable.rounded_gray_strock)
-                btnMedicalRecord.setBackgroundColor(ContextCompat.getColor(myContext!!,R.color.main_color))
+                btnMedicalMeasurement.background =
+                    ContextCompat.getDrawable(myContext!!, R.drawable.rounded_gray_strock)
+                btnMedicalRecord.setBackgroundColor(
+                    ContextCompat.getColor(
+                        myContext!!,
+                        R.color.main_color
+                    )
+                )
 
             }
         }

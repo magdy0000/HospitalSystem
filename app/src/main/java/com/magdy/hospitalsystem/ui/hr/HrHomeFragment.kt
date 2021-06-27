@@ -10,6 +10,7 @@ import com.magdy.hospitalsystem.base.BaseFragment
 import com.magdy.hospitalsystem.databinding.FragmentHomeHrBinding
 import com.magdy.hospitalsystem.ui.reception.ReceptionHomeFragmentDirections
 import com.magdy.hospitalsystem.utils.MySharedPreferences
+import com.magdy.hospitalsystem.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,6 +34,7 @@ class HrHomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeHrBinding.bind(view)
 
+
         initView()
         onClicks()
     }
@@ -55,6 +57,14 @@ class HrHomeFragment : BaseFragment() {
             cardProfile.setOnClickListener {
                 navigate(HrHomeFragmentDirections
                     .actionHrHomeFragmentToProfileFragment(true , MySharedPreferences.getUserId()))
+            }
+
+            cardTasks.setOnClickListener {
+                navigate(HrHomeFragmentDirections.actionHrHomeFragmentToTasksFragment())
+            }
+
+            cardReports.setOnClickListener {
+                navigate(HrHomeFragmentDirections.actionHrHomeFragmentToReportsFragment())
             }
         }
     }

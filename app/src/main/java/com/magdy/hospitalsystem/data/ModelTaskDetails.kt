@@ -10,6 +10,7 @@ data class TaskDetails(
     val created_at: String,
     val description: String,
     val id: Int,
+    val note : String,
     val status: String,
     val task_name: String,
     val to_do: List<ToDo>,

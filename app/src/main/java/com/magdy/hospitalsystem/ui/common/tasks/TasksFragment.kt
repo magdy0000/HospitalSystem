@@ -19,8 +19,7 @@ import com.magdy.hospitalsystem.databinding.TasksFragmentBinding
 import com.magdy.hospitalsystem.network.NetworkState
 import com.magdy.hospitalsystem.ui.reception.CreateCallFragmentDirections
 import com.magdy.hospitalsystem.ui.reception.ReceptionViewModel
-import com.magdy.hospitalsystem.utils.ProgressLoading
-import com.magdy.hospitalsystem.utils.showToast
+import com.magdy.hospitalsystem.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
@@ -57,10 +56,15 @@ class TasksFragment : BaseFragment() {
         tasksViewModel.showAllTasks(date)
 
 
+        initView()
         observers()
         onClicks()
     }
 
+    private fun initView (){
+        if (MySharedPreferences.getUserType() == Const.MANAGER)
+        binding.btnAddTask.visibilityVisible()
+    }
     private fun observers() {
 
         tasksViewModel.showAllTasksLiveData.observe(this, {
@@ -89,7 +93,6 @@ class TasksFragment : BaseFragment() {
 
         adapterRecyclerTasks.onUserClick = object : AdapterRecyclerTasks.OnTasksClick {
             override fun onClick(id: Int) {
-
                 navigate(TasksFragmentDirections.actionTasksFragmentToTaskDetailsFragment(id))
             }
         }
@@ -107,6 +110,9 @@ class TasksFragment : BaseFragment() {
             }
 
         binding.apply {
+            btnAddTask.setOnClickListener {
+                navigate(TasksFragmentDirections.actionTasksFragmentToCreateTaskFragment())
+            }
             imageView5.setOnClickListener {
                 datePicker()
             }

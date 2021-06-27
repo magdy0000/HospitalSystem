@@ -46,9 +46,7 @@ class NurseHomeFragment : BaseFragment() {
         binding.textName.text  = MySharedPreferences.getUserName()
         binding.apply {
 
-            cardCalls.setOnClickListener {
-                navigate(NurseHomeFragmentDirections.actionNurseHomeFragmentToDoctorCallFragment())
-            }
+
             cardAttendance.setOnClickListener {
 
                 navigate(NurseHomeFragmentDirections.actionNurseHomeFragmentToAttendanceFragment())

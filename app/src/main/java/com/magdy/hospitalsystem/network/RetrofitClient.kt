@@ -87,6 +87,11 @@ constructor(
         retrofitService.getAllReports(date)
     }
 
+    suspend fun answerReport ( id : Int
+                              ,  answer :String) = withContext(IO){
+        retrofitService.answerReport(id, answer)
+    }
+
     suspend fun endReport (id : Int) = withContext(IO){
         retrofitService.endReport(id)
     }
@@ -123,6 +128,12 @@ constructor(
     }
 
 
+    suspend fun sendCallManager (userId : Int
+                                 ,description :String ) = withContext(IO){
+        retrofitService.sendCallManager(userId ,description)
+    }
+
+
 
 
     suspend fun uploadMeasurement (caseId : Int
@@ -144,6 +155,12 @@ constructor(
         retrofitService.showMedicalRecordAnalysis(caseId)
     }
 
+    suspend fun createTasks ( userId : Int
+                             , taskName  :String
+                             , description :String
+                             , todoList : List<String> ) = withContext(IO){
+        retrofitService.createTasks(userId,taskName,description,todoList)
+    }
 
 
     suspend fun uploadMedicalRecord ( part: MultipartBody.Part
@@ -154,7 +171,9 @@ constructor(
         retrofitService.uploadMedicalRecord(part, call_id , status , note)
     }
 
-
+    suspend fun showReport (id : Int ) = withContext(IO){
+        retrofitService.showReport(id)
+    }
 
 
 

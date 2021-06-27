@@ -7,6 +7,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
+
+
     <ImageView
         android:id="@+id/btn_back"
         android:layout_width="@dimen/_30sdp"
@@ -29,21 +31,34 @@
         android:gravity="center"
         />
 
+    <ImageView
+        android:id="@+id/btn_add_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/ic_green_add"
+        app:layout_constraintBottom_toBottomOf="@+id/text_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_date" />
+
+
     <TextView
         android:id="@+id/text_date"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_12sdp"
-        tools:text="20-20-2020"
-        android:textColor="@color/black"
-        android:fontFamily="@font/cairo_semibold"
-        android:paddingStart="@dimen/_10sdp"
-        android:paddingVertical="@dimen/_7sdp"
-        app:layout_constraintStart_toStartOf="@id/btn_back"
-        app:layout_constraintTop_toBottomOf="@id/btn_back"
         android:background="@drawable/rounded_gray_strock"
-        />
+        android:fontFamily="@font/cairo_semibold"
+        android:paddingVertical="@dimen/_7sdp"
+        android:paddingStart="@dimen/_5sdp"
+
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/btn_add_task"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        tools:text="20-20-2020" />
 
     <ImageView
         android:id="@+id/imageView5"

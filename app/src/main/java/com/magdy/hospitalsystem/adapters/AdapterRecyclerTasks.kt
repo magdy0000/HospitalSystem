@@ -11,6 +11,7 @@ import com.magdy.hospitalsystem.data.CallsData
 import com.magdy.hospitalsystem.data.ModelAllTasks
 import com.magdy.hospitalsystem.data.TasksData
 import com.magdy.hospitalsystem.utils.Const
+import com.magdy.hospitalsystem.utils.MySharedPreferences
 
 class AdapterRecyclerTasks : RecyclerView.Adapter<AdapterRecyclerTasks.Holder>() {
 
@@ -55,7 +56,10 @@ class AdapterRecyclerTasks : RecyclerView.Adapter<AdapterRecyclerTasks.Holder>()
 
         init {
             itemView.setOnClickListener {
-                onUserClick?.onClick(list?.get(layoutPosition)?.id!!)
+                if (list?.get(layoutPosition)?.status !=Const.STATS_TASK_DONE
+                    || MySharedPreferences.getUserType() == Const.MANAGER) {
+                    onUserClick?.onClick(list?.get(layoutPosition)?.id!!)
+                }
             }
         }
 

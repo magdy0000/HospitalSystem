@@ -23,7 +23,6 @@ class AttendanceViewModel
     fun makeAttendance(status: String ) {
         _attendanceLiveData.postValue(NetworkState.LOADING)
         viewModelScope.launch(Dispatchers.IO) {
-
             try {
                 val data = retrofitClient.attendance(status)
 

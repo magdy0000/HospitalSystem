@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_semibold"
+        android:gravity="center"
+        android:text="@string/create_task"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:src="@drawable/ic_back"
+        android:padding="@dimen/_3sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/_8sdp"
+        />
+
+    <EditText
+        android:id="@+id/edit_task_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:background="@drawable/edit_shape_trans"
+        android:hint="@string/task_name"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:padding="@dimen/_12ssp"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back"
+        />
+
+
+    <TextView
+        android:id="@+id/edit_doctor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:background="@drawable/edit_shape_trans"
+        android:maxLines="1"
+        android:padding="@dimen/_12ssp"
+        android:text="@string/select_employee"
+        android:textColor="@color/dark_gray"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginTop="@dimen/_10sdp"
+
+        app:drawableEndCompat="@drawable/ic_arrow_right"
+        app:layout_constraintTop_toBottomOf="@+id/edit_task_name" />
+
+    <EditText
+        android:id="@+id/edit_report_description"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:background="@drawable/edit_shape_trans"
+        android:gravity="top"
+        android:hint="@string/task_description"
+        android:padding="@dimen/_12ssp"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintHeight_percent="0.20"
+        app:layout_constraintTop_toBottomOf="@+id/edit_doctor" />
+
+    <TextView
+        android:id="@+id/todo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:fontFamily="@font/cairo_bold"
+        android:text="@string/todo"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_report_description" />
+
+    <TextView
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:fontFamily="@font/cairo_bold"
+        android:text="@string/add"
+        android:drawableStart="@drawable/ic_baseline_add_24_green"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_report_description" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_tasks"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        app:layout_constraintHeight_default="wrap"
+        app:reverseLayout="false"
+        app:layout_constraintBottom_toTopOf="@+id/btn_send_task"
+        app:layout_constraintTop_toBottomOf="@+id/todo" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_send_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:fontFamily="@font/cairo_bold"
+        android:paddingVertical="@dimen/_8sdp"
+        android:text="@string/send"
+        android:textSize="@dimen/_13sdp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

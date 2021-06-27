@@ -61,6 +61,9 @@ class SplashFragment : BaseFragment() {
                 navigate(SplashFragmentDirections.actionSplashFragmentToAnalysisHomeFragment())
 
             }
+            else if (MySharedPreferences.getUserType() == Const.MANAGER) {
+                navigate(SplashFragmentDirections.actionSplashFragmentToManagerHomeFragment())
+            }
             else {
                 navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
             }

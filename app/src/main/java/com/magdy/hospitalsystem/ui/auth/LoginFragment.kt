@@ -1,12 +1,15 @@
 package com.magdy.hospitalsystem.ui.auth
 
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.magdy.hospitalsystem.base.BaseFragment
 import com.magdy.hospitalsystem.R
 import com.magdy.hospitalsystem.data.ModelUser
@@ -47,7 +50,6 @@ class LoginFragment :  BaseFragment() {
         binding.apply {
             btnLogin.setOnClickListener {
                 validation()
-
             }
         }
     }
@@ -98,6 +100,11 @@ class LoginFragment :  BaseFragment() {
             navigate(LoginFragmentDirections.actionLoginFragmentToAnalysisHomeFragment())
 
         }
+        else if (MySharedPreferences.getUserType() == Const.MANAGER) {
+
+            navigate(LoginFragmentDirections.actionLoginFragmentToManagerHomeFragment())
+
+        }
         else if (MySharedPreferences.getUserType() == Const.NURSE) {
 
             navigate(LoginFragmentDirections.actionLoginFragmentToNurseHomeFragment())
@@ -119,7 +126,18 @@ class LoginFragment :  BaseFragment() {
             binding.editEmail.error = getString(R.string.wrong_email_address)
         }
         else{
-            loginViewModel.login(email,password ,"")
+
+            FirebaseMessaging.getInstance().token
+                .addOnCompleteListener(OnCompleteListener { task ->
+                    if (task.isSuccessful) {
+
+                        val token = task.result
+                        Log.e("TAG2", token )
+                        loginViewModel.login(email, password, token)
+                        return@OnCompleteListener
+                    }
+                })
+
         }
     }
 

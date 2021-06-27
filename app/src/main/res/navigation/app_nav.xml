@@ -73,6 +73,16 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_splashFragment_to_managerHomeFragment"
+            app:destination="@id/managerHomeFragment"
+            app:popUpTo="@+id/app_nav"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -124,6 +134,16 @@
         <action
             android:id="@+id/action_loginFragment_to_analysisHomeFragment"
             app:destination="@id/analysisHomeFragment"
+            app:popUpTo="@+id/app_nav"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_loginFragment_to_managerHomeFragment"
+            app:destination="@id/managerHomeFragment"
             app:popUpTo="@+id/app_nav"
             app:popUpToInclusive="true"
             app:enterAnim="@anim/slide_in_right"
@@ -225,6 +245,12 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_hrHomeFragment_to_reportsFragment2"
+            app:destination="@id/reportsFragment" />
+        <action
+            android:id="@+id/action_hrHomeFragment_to_tasksFragment2"
+            app:destination="@id/tasksFragment" />
     </fragment>
     <fragment
         android:id="@+id/employeeFragment"
@@ -374,6 +400,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_tasksFragment_to_createTaskFragment"
+            app:destination="@id/createTaskFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/taskDetailsFragment"
@@ -394,6 +428,14 @@
         <action
             android:id="@+id/action_reportsFragment_to_createReportFragment"
             app:destination="@id/createReportFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_reportsFragment_to_showReportFragment"
+            app:destination="@id/showReportFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -680,6 +722,86 @@
         >
         <argument
             android:name="caseId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/managerHomeFragment"
+        android:name="com.magdy.hospitalsystem.ui.manager.ManagerHomeFragment"
+        android:label="ManagerHomeFragment"
+        tools:layout="@layout/fragment_home_manager">
+        <action
+            android:id="@+id/action_managerHomeFragment_to_doctorAllCasesFragment"
+            app:destination="@id/doctorAllCasesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_managerHomeFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_managerHomeFragment_to_attendanceFragment"
+            app:destination="@id/attendanceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_managerHomeFragment_to_employeeFragment"
+            app:destination="@id/employeeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_managerHomeFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_managerHomeFragment_to_reportsFragment"
+            app:destination="@id/reportsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectEmployeeFragment"
+        android:name="com.magdy.hospitalsystem.ui.manager.SelectEmployeeFragment"
+        android:label="SelectEmployeeFragment"
+        tools:layout="@layout/fragment_select_employee"
+        />
+    <fragment
+        android:id="@+id/createTaskFragment"
+        android:name="com.magdy.hospitalsystem.ui.manager.CreateTaskFragment"
+        android:label="CreateTaskFragment"
+        tools:layout="@layout/fragment_create_task"
+        >
+        <action
+            android:id="@+id/action_createTaskFragment_to_selectEmployeeFragment"
+            app:destination="@id/selectEmployeeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/showReportFragment"
+        android:name="com.magdy.hospitalsystem.ui.common.reports.ShowReportFragment"
+        android:label="ShowReportFragment"
+        tools:layout="@layout/fragment_show_report"
+        >
+        <argument
+            android:name="reportId"
             app:argType="integer" />
     </fragment>
 </navigation>

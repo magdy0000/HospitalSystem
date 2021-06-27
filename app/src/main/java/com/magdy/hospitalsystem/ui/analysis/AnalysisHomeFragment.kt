@@ -48,9 +48,7 @@ class AnalysisHomeFragment  : BaseFragment (){
         binding.apply {
 
 
-            cardCalls.setOnClickListener {
-                navigate(AnalysisHomeFragmentDirections.actionAnalysisHomeFragmentToDoctorCallFragment())
-            }
+
             cardAttendance.setOnClickListener {
 
                 navigate(AnalysisHomeFragmentDirections.actionAnalysisHomeFragmentToAttendanceFragment())

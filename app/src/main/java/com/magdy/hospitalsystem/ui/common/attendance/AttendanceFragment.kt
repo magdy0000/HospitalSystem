@@ -102,26 +102,6 @@ class AttendanceFragment  : BaseFragment() {
                 }
             }
         })
-        attendanceViewModel.attendanceLiveData.observe(this@AttendanceFragment ,{
-            when (it.status) {
-                NetworkState.Status.RUNNING -> {
-                    ProgressLoading.show(requireActivity())
-                }
-                NetworkState.Status.SUCCESS -> {
-
-                    val data = it.data as ModelCreation
-
-                    showToast(data.message)
-                    findNavController().popBackStack()
-                    ProgressLoading.dismiss()
-
-                }
-                else -> {
-                    ProgressLoading.dismiss()
-                    showToast(it.msg)
-                }
-            }
-        })
     }
 
     private fun onClicks (){
@@ -141,12 +121,11 @@ class AttendanceFragment  : BaseFragment() {
                 }
                 if (distance(userLocation?.latitude!!
                         ,userLocation?.longitude!!
-                        ,30.2123213
-                        ,31.132131231) < 400){
-
+                        ,29.936074
+                        , 30.883889) < 2000000){// this num for location of hospital
                             binding.noteUi.visibilityVisible()
 
-                    return@setOnClickListener
+                  //  return@setOnClickListener
 
                 }
                 binding.noteUi.visibilityGone()
@@ -163,10 +142,10 @@ class AttendanceFragment  : BaseFragment() {
                         ,userLocation?.longitude!!
                         ,30.2123213
                         ,31.132131231) < 400){
-
+                    binding.massage.text =getString(R.string.location_warn)
                     binding.noteUi.visibilityVisible()
 
-                    return@setOnClickListener
+                //    return@setOnClickListener
 
                 }
                 binding.noteUi.visibilityGone()
@@ -178,8 +157,6 @@ class AttendanceFragment  : BaseFragment() {
     }
     @SuppressLint("MissingPermission")
     private fun getLocation (){
-
-
 
         mLocationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult) {
@@ -203,7 +180,6 @@ class AttendanceFragment  : BaseFragment() {
     }
 
     private fun locationChecker (){
-
 
         val builder = LocationSettingsRequest.Builder()
             .addLocationRequest(mLocationRequest)

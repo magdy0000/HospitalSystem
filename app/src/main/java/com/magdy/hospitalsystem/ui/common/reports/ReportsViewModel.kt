@@ -80,4 +80,46 @@ class ReportsViewModel
         }
     }
 
+    private val _showReportLiveData = SingleLiveEvent<NetworkState>()
+    val showReportLiveData get() = _showReportLiveData
+
+    fun showReport(id: Int) {
+        _showReportLiveData.postValue(NetworkState.LOADING)
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val data = retrofitClient.showReport(id)
+                if (data.status == 1) {
+                    _showReportLiveData.postValue(NetworkState.getLoaded(data))
+                } else {
+                    _showReportLiveData.postValue(NetworkState.getErrorMessage(data.message))
+
+                }
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+                _showReportLiveData.postValue(NetworkState.getErrorMessage(ex))
+            }
+        }
+    }
+
+    private val _answerReportLiveData = SingleLiveEvent<NetworkState>()
+    val answerReportLiveData get() = _answerReportLiveData
+
+    fun answerReport(id: Int, answer : String) {
+        _answerReportLiveData.postValue(NetworkState.LOADING)
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val data = retrofitClient.answerReport(id, answer)
+                if (data.status == 1) {
+                    _answerReportLiveData.postValue(NetworkState.getLoaded(data))
+                } else {
+                    _answerReportLiveData.postValue(NetworkState.getErrorMessage(data.message))
+
+                }
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+                _answerReportLiveData.postValue(NetworkState.getErrorMessage(ex))
+            }
+        }
+    }
+
 }

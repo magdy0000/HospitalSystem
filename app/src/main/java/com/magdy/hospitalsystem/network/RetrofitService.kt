@@ -74,6 +74,12 @@ interface RetrofitService {
     suspend fun showAllTasks(@Query("date") date: String): ModelAllTasks
 
     @FormUrlEncoded
+    @POST("tasks")
+    suspend fun createTasks (@Field("user_id") userId : Int
+                             ,@Field("task_name") taskName  :String
+                             ,@Field("description") description :String
+                             ,@Field("todos[]") todoList : List<String> ) : ModelCreation
+    @FormUrlEncoded
     @PUT("tasks/{id}")
     suspend fun execution(
         @Path("id") id: Int, @Field("note") note: String
@@ -87,6 +93,14 @@ interface RetrofitService {
 
     @DELETE("reports/{id}")
     suspend fun endReport(@Path("id") id: Int): ModelCreation
+
+    @GET("reports/{id}")
+    suspend fun showReport (@Path("id") id : Int ) : ModelShowReport
+
+    @FormUrlEncoded
+    @PUT("reports/{id}")
+    suspend fun answerReport (@Path("id") id : Int
+                              , @Field("answer") answer :String) : ModelCreation
 
     @FormUrlEncoded
     @POST("reports")
@@ -121,6 +135,7 @@ interface RetrofitService {
                                    ,@Field("status") status : String ) : ModelCreation
 
 
+
     @FormUrlEncoded
     @POST("medical-record-show")
     suspend fun showMedicalRecordDoctor (@Field("call_id") caseId  : Int) :ModelShowMedicalRecordDoctor
@@ -130,6 +145,10 @@ interface RetrofitService {
     suspend fun showMedicalRecordAnalysis (@Field("call_id") caseId  : Int) :ModelShowMedicalRecordAnalysis
 
 
+    @FormUrlEncoded
+    @POST("calls-manger")
+    suspend fun sendCallManager (@Field("user_id") userId : Int
+                                 ,@Field("description")description :String ) : ModelCreation
     @Multipart
     @POST("medical-record")
     suspend fun uploadMedicalRecord (@Part part: MultipartBody.Part

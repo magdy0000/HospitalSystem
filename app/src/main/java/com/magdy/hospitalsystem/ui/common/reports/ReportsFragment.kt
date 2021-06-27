@@ -80,6 +80,12 @@ class ReportsFragment : BaseFragment() {
     private fun onClicks (){
         binding.textDate.text = fullFormat.format(cal.time)
 
+        adapterRecyclerReports.onReportClick = object: AdapterRecyclerAllReports.OnReportClick{
+            override fun onClick(id: Int) {
+                navigate(ReportsFragmentDirections.actionReportsFragmentToShowReportFragment(id))
+            }
+        }
+
         binding.apply {
             btnDate.setOnClickListener {
                 dataPicker()

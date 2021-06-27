@@ -33,6 +33,7 @@ class SelectDoctorForCallsFragment : BaseFragment() {
     private var doctorName = ""
     private val hrViewModel : HrViewModel by viewModels()
 
+    var searchKey = ""
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,9 +45,11 @@ class SelectDoctorForCallsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSelectDoctorForCallsBinding.bind(view)
 
-        val searchKey = SelectDoctorForCallsFragmentArgs.fromBundle(requireArguments()).searchKey
+         searchKey = SelectDoctorForCallsFragmentArgs.fromBundle(requireArguments()).searchKey
         onClicks()
         observers()
+        binding.textView3.text = "Select $searchKey"
+        binding.btnSelectDoctor.text = "Select $searchKey"
 
         hrViewModel.getAllUsers(searchKey,"")
     }
@@ -101,7 +104,7 @@ class SelectDoctorForCallsFragment : BaseFragment() {
 
             }
             btnSearch.setOnClickListener {
-                hrViewModel.getAllUsers(Const.DOCTOR,editSearch.text.toString())
+                hrViewModel.getAllUsers(searchKey,editSearch.text.toString())
             }
         }
 

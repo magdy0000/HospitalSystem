@@ -251,19 +251,6 @@
         app:layout_constraintTop_toBottomOf="@+id/text_patient_desc" />
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
-        android:layout_marginHorizontal="@dimen/_12sdp"
-        android:backgroundTint="@color/red"
-        android:fontFamily="@font/cairo_bold"
-        android:paddingVertical="@dimen/_8sdp"
-        android:text="@string/logout"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-      />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

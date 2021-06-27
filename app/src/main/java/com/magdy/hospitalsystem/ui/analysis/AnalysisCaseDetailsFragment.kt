@@ -172,12 +172,16 @@ class AnalysisCaseDetailsFragment  : BaseFragment(){
 
     private fun onClicks() {
         binding.apply {
+            btnBack.setOnClickListener {
+                myActivity?.onBackPressed()
+            }
 
             layoutMedicalRecord.btnUploadImage.setOnClickListener {
                 ImagePicker.create(this@AnalysisCaseDetailsFragment).start()
             }
 
             layoutMedicalRecord.btnAddRecord.setOnClickListener {
+                if (images?.size != 0)
                 prepareFilePart(images?.get(0)!!)
             }
 
@@ -231,7 +235,7 @@ class AnalysisCaseDetailsFragment  : BaseFragment(){
 
         val file = File(image.path)
         val bitmap = BitmapFactory.decodeFile(file.path)
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, FileOutputStream(file))
+    //    bitmap.compress(Bitmap.CompressFormat.JPEG, 90, FileOutputStream(file))
 
         val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
         val multiPartImage = MultipartBody.Part.createFormData("image", file.name, requestFile)

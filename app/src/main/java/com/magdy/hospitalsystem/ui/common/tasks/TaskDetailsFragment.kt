@@ -16,8 +16,7 @@ import com.magdy.hospitalsystem.data.ToDo
 
 import com.magdy.hospitalsystem.databinding.FragmentTasksDetailsBinding
 import com.magdy.hospitalsystem.network.NetworkState
-import com.magdy.hospitalsystem.utils.ProgressLoading
-import com.magdy.hospitalsystem.utils.showToast
+import com.magdy.hospitalsystem.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -46,7 +45,16 @@ class TaskDetailsFragment  : BaseFragment() {
         taskViewModel.showTask(taskId)
         observers()
         onClicks()
+        initView()
 
+    }
+    private fun initView () {
+        binding.apply {
+            if (MySharedPreferences.getUserType() == Const.MANAGER) {
+                btnExecution.visibilityGone()
+                editNoteTask.visibilityGone()
+            }
+        }
     }
     private fun onClicks (){
 
@@ -80,7 +88,13 @@ class TaskDetailsFragment  : BaseFragment() {
                             textTaskName.text = task_name
                             textDate.text = created_at
                             textUserName.text = user.first_name+" "+user.last_name
-                            textDetails.text = description
+                            textType.text = "Specialist - ${user.specialist}"
+                            if (MySharedPreferences.getUserType() == Const.MANAGER){
+                                textDetails.text = note
+                            }else{
+                                textDetails.text = description
+                            }
+
 
                             adapterRecyclerToDo.list = to_do as ArrayList<ToDo>
                             recyclerTodo.adapter = adapterRecyclerToDo
