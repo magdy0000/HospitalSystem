@@ -92,7 +92,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:src="@drawable/ic_type_with_back"
+                android:src="@drawable/ic_back_green_gender"
                 app:layout_constraintTop_toBottomOf="@+id/image_type"
                 />
             <TextView
@@ -116,7 +116,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:src="@drawable/ic_type_with_back"
+                android:src="@drawable/ic_back_green_birthday"
                 app:layout_constraintTop_toBottomOf="@+id/image_gender"
                 />
             <TextView
@@ -141,7 +141,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:src="@drawable/ic_type_with_back"
+                android:src="@drawable/ic_green_back_location"
                 app:layout_constraintTop_toBottomOf="@+id/image_birthday"
                 />
             <TextView
@@ -166,7 +166,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:src="@drawable/ic_type_with_back"
+                android:src="@drawable/ic_back_green_status"
                 app:layout_constraintTop_toBottomOf="@+id/image_address"
                 />
             <TextView
@@ -190,7 +190,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:src="@drawable/ic_type_with_back"
+                android:src="@drawable/ic_back_green_email"
                 app:layout_constraintTop_toBottomOf="@+id/image_status"
                 />
             <TextView
@@ -213,7 +213,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:src="@drawable/ic_type_with_back"
+                android:src="@drawable/ic_back_green_phone"
                 app:layout_constraintTop_toBottomOf="@+id/image_email"
                 />
             <TextView

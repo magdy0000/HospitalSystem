@@ -15,6 +15,8 @@ import com.magdy.hospitalsystem.base.BaseFragment
 import com.magdy.hospitalsystem.data.ModelUser
 import com.magdy.hospitalsystem.databinding.FragmentRegisterNewEmployeeBinding
 import com.magdy.hospitalsystem.network.NetworkState
+import com.magdy.hospitalsystem.utils.Const.ANALYSIS
+import com.magdy.hospitalsystem.utils.Const.ANALYSIS_VIEW_KEY
 import com.magdy.hospitalsystem.utils.ProgressLoading
 import com.magdy.hospitalsystem.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -107,7 +109,7 @@ class RegisterNewEmployeeFragment  :BaseFragment() {
             val  address = editAddress.text.toString()
             val  phone = editPhone.text.toString()
             val  gender = spinnerGender.selectedItem.toString()
-            val  type = spinnerSpecialist.selectedItem.toString()
+            var  type = spinnerSpecialist.selectedItem.toString()
             val  status = spinnerStatus.selectedItem.toString()
 
 
@@ -137,6 +139,10 @@ class RegisterNewEmployeeFragment  :BaseFragment() {
             else if (password == ""){
                 editPassword.error = getString(R.string.required)
             }else{
+
+                if (type == ANALYSIS_VIEW_KEY){
+                    type = ANALYSIS
+                }
                 hrViewModel.createNewUser(email
                     ,password
                     ,fName

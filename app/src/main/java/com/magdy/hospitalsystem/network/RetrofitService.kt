@@ -131,9 +131,18 @@ interface RetrofitService {
     suspend fun uploadMeasurement (@Field("call_id") caseId : Int
                                    ,@Field("blood_pressure") bloodPressure :String
                                    ,@Field("sugar_analysis") sugarAnalysis :String
+                                   ,@Field("tempreture") tempreture :String
+                                   ,@Field("fluid_balance") fluidBalance :String
+                                   ,@Field("respiratory_rate") respiratoryRate :String
+                                   ,@Field("heart_rate") heartRate :String
                                    ,@Field("note") not :String
                                    ,@Field("status") status : String ) : ModelCreation
 
+    @FormUrlEncoded
+    @POST("send-notification")
+    suspend fun sendNotification (@Field("to") userId  : Int
+                                  ,@Field("title") title : String
+                                  ,@Field("body") body : String) : ModelCreation
 
 
     @FormUrlEncoded

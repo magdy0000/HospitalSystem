@@ -103,7 +103,7 @@
         android:text="@string/blood_pressure"
         android:textColor="@color/black"
         android:textSize="@dimen/_12sdp"
-        android:padding="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
         android:background="@drawable/edit_shape"
         android:layout_margin="@dimen/_12sdp"
         app:layout_constraintStart_toStartOf="parent"
@@ -115,9 +115,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_12sdp"
         android:fontFamily="@font/cairo_semibold"
-        android:inputType="number"
+        android:inputType="numberSigned"
         android:hint="@string/blood_pressure"
-        android:padding="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
         android:background="@drawable/edit_shape"
         android:textColor="@color/black"
         android:textSize="@dimen/_12sdp"
@@ -133,9 +133,10 @@
         android:fontFamily="@font/cairo_semibold"
         android:text="@string/sugar_analysis"
         android:textColor="@color/black"
-        android:padding="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
         android:background="@drawable/edit_shape"
         android:textSize="@dimen/_12sdp"
+
         android:layout_margin="@dimen/_12sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/blood_pressure" />
@@ -148,13 +149,136 @@
         android:fontFamily="@font/cairo_semibold"
         android:textColor="@color/black"
         android:textSize="@dimen/_12sdp"
-        android:inputType="number"
+        android:inputType="numberSigned"
         android:hint="@string/sugar_analysis"
-        android:padding="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
         android:background="@drawable/edit_shape"
         app:layout_constraintBottom_toBottomOf="@+id/suger"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/suger"
+        />
+
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_semibold"
+        android:text="@string/temp"
+        android:textColor="@color/black"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/edit_shape"
+        android:textSize="@dimen/_12sdp"
+        android:layout_margin="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/suger" />
+
+    <EditText
+        android:id="@+id/edit_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:fontFamily="@font/cairo_semibold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:inputType="numberSigned"
+        android:hint="@string/temp"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/edit_shape"
+        app:layout_constraintBottom_toBottomOf="@+id/temp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/temp"
+        />
+
+    <TextView
+        android:id="@+id/fluid_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_semibold"
+        android:text="@string/fluid_balance"
+        android:textColor="@color/black"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/edit_shape"
+        android:textSize="@dimen/_12sdp"
+        android:layout_margin="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temp" />
+
+    <EditText
+        android:id="@+id/edit_fluid_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:fontFamily="@font/cairo_semibold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:inputType="numberSigned"
+        android:hint="@string/fluid_balance"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/edit_shape"
+        app:layout_constraintBottom_toBottomOf="@+id/fluid_balance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fluid_balance"
+        />
+    <TextView
+        android:id="@+id/respiratory_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_semibold"
+        android:text="@string/respiratory_rate"
+        android:textColor="@color/black"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/edit_shape"
+        android:textSize="@dimen/_12sdp"
+        android:layout_margin="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fluid_balance" />
+
+    <EditText
+        android:id="@+id/edit_respiratory_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:fontFamily="@font/cairo_semibold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:inputType="numberSigned"
+        android:hint="@string/fluid_balance"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/edit_shape"
+        app:layout_constraintBottom_toBottomOf="@+id/respiratory_rate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/respiratory_rate"
+        />
+
+    <TextView
+        android:id="@+id/heart_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_semibold"
+        android:text="@string/heart_rate"
+        android:textColor="@color/black"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/edit_shape"
+        android:textSize="@dimen/_12sdp"
+        android:layout_margin="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/respiratory_rate" />
+
+    <EditText
+        android:id="@+id/edit_heart_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:fontFamily="@font/cairo_semibold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:inputType="numberSigned"
+        android:hint="@string/heart_rate"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/edit_shape"
+        app:layout_constraintBottom_toBottomOf="@+id/heart_rate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/heart_rate"
         />
 
     <EditText
@@ -166,11 +290,12 @@
         android:gravity="top"
         android:hint="@string/note"
         android:padding="@dimen/_12ssp"
-        android:layout_marginTop="@dimen/_10sdp"
         android:textColor="@color/black"
         android:textSize="@dimen/_12ssp"
-        app:layout_constraintHeight_percent="0.25"
-        app:layout_constraintTop_toBottomOf="@+id/suger" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_add_measurement"
+       android:layout_marginVertical="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/heart_rate"
+        tools:layout_editor_absoluteX="16dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_add_measurement"

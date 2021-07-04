@@ -57,7 +57,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService(){
             channel.vibrationPattern = longArrayOf(0, 1000, 500, 1000)
             notificationManager.createNotificationChannel(channel)
         }
-        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.ic_employee)
             .setVibrate(longArrayOf(0, 1000, 500, 1000))

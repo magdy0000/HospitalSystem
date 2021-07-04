@@ -4,6 +4,8 @@ object Const {
 
     const val BASE_URL = "http://test.parfaih.com/api/v1/"
 
+    const val ANALYSIS_VIEW_KEY  = "laboratory Physician"
+
     const val DOCTOR = "doctor"
     const val NURSE = "nurse"
     const val HR = "hr"

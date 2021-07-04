@@ -25,6 +25,8 @@ class NurseCaseDetailsFragment : BaseFragment() {
     private var _binding: FragmentNurseCaseDetailsBinding? = null
     private val binding get() = _binding!!
 
+    private var doctorId : Int ?= null
+    private var patientName : String ?= null
     private var caseId = 0
     val nurseViewModel: NurseViewModel by viewModels()
 
@@ -33,6 +35,7 @@ class NurseCaseDetailsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_nurse_case_details, container, false)
     }
 
@@ -40,12 +43,12 @@ class NurseCaseDetailsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentNurseCaseDetailsBinding.bind(view)
 
-
         caseId = NurseCaseDetailsFragmentArgs.fromBundle(requireArguments()).caseId
 
         nurseViewModel.showCase(caseId)
         onClicks()
         observers()
+
     }
 
     private fun observers() {
@@ -58,6 +61,8 @@ class NurseCaseDetailsFragment : BaseFragment() {
 
                     val data = it.data as ModelCaseDetails
 
+                   doctorId =  data.data.doc_id
+                    patientName = data.data.patient_name
 
                     binding.layoutMedicalMeasurement.apply {
                         data.data.apply {
@@ -125,18 +130,45 @@ class NurseCaseDetailsFragment : BaseFragment() {
             btnBack.setOnClickListener {
                 myActivity?.onBackPressed()
             }
+            layoutCaseDetailsNurse.btnCallDoctor.setOnClickListener {
+
+                if (doctorId == null)
+                    return@setOnClickListener
+
+                nurseViewModel.sendNotification(doctorId!! ,"Emergency"
+                    , "come to patient $patientName")
+            }
+
 
             layoutMedicalMeasurement.btnAddMeasurement.setOnClickListener {
                 val suger = layoutMedicalMeasurement.editSuger.text.toString()
                 val bloodPressure = layoutMedicalMeasurement.editBloodPressure.text.toString()
+                val heartRate = layoutMedicalMeasurement.editHeartRate.text.toString()
+                val fluidBalance = layoutMedicalMeasurement.editFluidBalance.text.toString()
+                val respiratoryRate = layoutMedicalMeasurement.editRespiratoryRate.text.toString()
+                val temp = layoutMedicalMeasurement.editTemp.text.toString()
                 val note= layoutMedicalMeasurement.editNoteMeasurement.text.toString()
                 if (bloodPressure.isEmpty()){
                     layoutMedicalMeasurement.editBloodPressure.error = getString(R.string.required)
                 }else if (suger.isEmpty()){
                     layoutMedicalMeasurement.editSuger.error = getString(R.string.required)
 
+                }else if (temp.isEmpty()){
+                    layoutMedicalMeasurement.temp.error = getString(R.string.required)
+
+                }else if (fluidBalance.isEmpty()){
+                    layoutMedicalMeasurement.editFluidBalance.error = getString(R.string.required)
+
+                }else if (respiratoryRate.isEmpty()){
+                    layoutMedicalMeasurement.editRespiratoryRate.error = getString(R.string.required)
+
+                }else if (heartRate.isEmpty()){
+                    layoutMedicalMeasurement.editHeartRate.error = getString(R.string.required)
+
                 }else{
-                    nurseViewModel.uploadMeasurement(caseId,bloodPressure ,suger, note)
+                    nurseViewModel.uploadMeasurement(caseId,bloodPressure
+                           ,suger,temp,fluidBalance,respiratoryRate
+                        ,heartRate,note)
                 }
             }
 

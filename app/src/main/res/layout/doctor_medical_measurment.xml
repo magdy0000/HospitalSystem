@@ -4,6 +4,7 @@
     android:layout_height="0dp"
     tools:layout_height="match_parent"
     android:visibility="gone"
+    tools:visibility="visible"
     android:id="@+id/parent_layout_medical_measurement"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -145,5 +146,119 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/suger"
         tools:text="120-313" />
+
+
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_semibold"
+        android:text="@string/temp"
+        android:textColor="@color/black"
+        android:padding="@dimen/_5sdp"
+        android:textSize="@dimen/_12sdp"
+        android:layout_margin="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/suger" />
+
+    <TextView
+        android:id="@+id/text_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:fontFamily="@font/cairo_semibold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:padding="@dimen/_5sdp"
+        tools:text="120-313"
+        app:layout_constraintBottom_toBottomOf="@+id/temp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/temp"
+        />
+
+    <TextView
+        android:id="@+id/fluid_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_semibold"
+        android:text="@string/fluid_balance"
+        android:textColor="@color/black"
+        android:padding="@dimen/_5sdp"
+        android:textSize="@dimen/_12sdp"
+        android:layout_margin="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temp" />
+
+    <TextView
+        android:id="@+id/text_fluid_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:fontFamily="@font/cairo_semibold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+
+        tools:text="120-313"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/fluid_balance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fluid_balance"
+        />
+    <TextView
+        android:id="@+id/respiratory_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_semibold"
+        android:text="@string/respiratory_rate"
+        android:textColor="@color/black"
+        android:padding="@dimen/_5sdp"
+        android:textSize="@dimen/_12sdp"
+        android:layout_margin="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fluid_balance" />
+
+    <TextView
+        android:id="@+id/text_respiratory_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:fontFamily="@font/cairo_semibold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+
+        android:padding="@dimen/_5sdp"
+        tools:text="120-313"
+        app:layout_constraintBottom_toBottomOf="@+id/respiratory_rate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/respiratory_rate"
+        />
+
+    <TextView
+        android:id="@+id/heart_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_semibold"
+        android:text="@string/heart_rate"
+        android:textColor="@color/black"
+        android:padding="@dimen/_5sdp"
+        android:textSize="@dimen/_12sdp"
+        android:layout_margin="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/respiratory_rate" />
+
+    <TextView
+        android:id="@+id/text_heart_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:fontFamily="@font/cairo_semibold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        tools:text="120-313"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/heart_rate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/heart_rate"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

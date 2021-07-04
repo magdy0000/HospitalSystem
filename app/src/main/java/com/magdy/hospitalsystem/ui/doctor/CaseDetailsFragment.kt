@@ -20,18 +20,22 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CaseDetailsFragment : BaseFragment() {
 
+    private var _binding : FragmentCaseDetailsBinding? = null
 
-    private var _binding: FragmentCaseDetailsBinding? = null
     private val binding get() = _binding!!
 
     private var nurseName = ""
+
     private val doctorViewModel: DoctorViewModel by viewModels()
+
     private var caseId = 0
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_case_details, container, false)
     }
 
@@ -100,6 +104,12 @@ class CaseDetailsFragment : BaseFragment() {
                             textDetails.text = measurement_note
                             textBloodPressure.text = blood_pressure
                             textSuger.text = sugar_analysis
+
+                            textTemp.text = tempreture
+                            textFluidBalance.text = fluid_balance
+                            textRespiratoryRate.text = respiratory_rate
+                            textHeartRate.text = heart_rate
+
                             textUserName.text = nurse_id
                         }
 

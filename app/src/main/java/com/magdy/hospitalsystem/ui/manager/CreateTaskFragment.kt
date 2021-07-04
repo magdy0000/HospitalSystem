@@ -60,6 +60,10 @@ class CreateTaskFragment : BaseFragment() , NotifyAddTask {
         }
 
         binding.apply {
+
+            btnBack.setOnClickListener {
+                myActivity?.onBackPressed()
+            }
             editDoctor.setOnClickListener {
 
                 navigate(CreateTaskFragmentDirections.actionCreateTaskFragmentToSelectEmployeeFragment())

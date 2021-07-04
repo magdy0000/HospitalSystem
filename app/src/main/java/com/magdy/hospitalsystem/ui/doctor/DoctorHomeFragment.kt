@@ -37,6 +37,7 @@ class DoctorHomeFragment : BaseFragment() {
     }
 
     private fun onClicks() {
+        binding.imageProfile.setImageResource(getImage())
         binding.textType.text = MySharedPreferences.getUserType()
         binding.textName.text  = MySharedPreferences.getUserName()
         binding.apply {

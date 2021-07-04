@@ -36,6 +36,7 @@ class ReceptionHomeFragment : BaseFragment() {
 
     private fun initView(){
         binding.apply {
+            imageProfile.setImageResource(getImage())
             textName.text = MySharedPreferences.getUserName()
             textType.text=  MySharedPreferences.getUserType()
         }

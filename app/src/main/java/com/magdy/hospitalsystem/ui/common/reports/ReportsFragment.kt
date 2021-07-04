@@ -19,8 +19,7 @@ import com.magdy.hospitalsystem.databinding.FragmentReceptionHomeBinding
 import com.magdy.hospitalsystem.databinding.FragmentReportsBinding
 import com.magdy.hospitalsystem.network.NetworkState
 import com.magdy.hospitalsystem.ui.reception.ReceptionViewModel
-import com.magdy.hospitalsystem.utils.ProgressLoading
-import com.magdy.hospitalsystem.utils.showToast
+import com.magdy.hospitalsystem.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
@@ -78,6 +77,10 @@ class ReportsFragment : BaseFragment() {
     }
 
     private fun onClicks (){
+
+        if(MySharedPreferences.getUserType() == Const.MANAGER){
+            binding.btnAddReport.visibilityGone()
+        }
         binding.textDate.text = fullFormat.format(cal.time)
 
         adapterRecyclerReports.onReportClick = object: AdapterRecyclerAllReports.OnReportClick{

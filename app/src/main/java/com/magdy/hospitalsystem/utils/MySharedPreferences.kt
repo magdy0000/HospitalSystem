@@ -15,6 +15,8 @@ object MySharedPreferences {
     private const val USER_EMAIL= "user email"
     private const val USER_TOKEN= "token"
     private const val USER_ID =  "user id"
+    private const val USER_ATTENDED =  "attended"
+    private const val USER_LEAVING =  "leaving"
 
 
 
@@ -105,9 +107,37 @@ object MySharedPreferences {
 
     fun getUserToken(): String? {
         return getSharedPreferences().getString(USER_TOKEN, "" )
+    }
+
+    fun setUserAttended (id : String){
+
+        val editor = getSharedPreferences().edit()
+        editor.putString(USER_ATTENDED, id).apply()
+
+    }
+
+    fun getUserAttended  (): String? {
+        return getSharedPreferences().getString(USER_ATTENDED, "" )
 
 
     }
+
+
+    fun setUserLeaving (id : String){
+
+        val editor = getSharedPreferences().edit()
+        editor.putString(USER_LEAVING, id).apply()
+
+    }
+
+    fun getUserLeaving  (): String? {
+        return getSharedPreferences().getString(USER_LEAVING, "" )
+
+
+    }
+
+
+
 
 
 

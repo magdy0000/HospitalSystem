@@ -7,7 +7,6 @@
     android:id="@+id/parent_medical_record_layout"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/btn_medical_record"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -100,9 +99,12 @@
 
     <ImageView
         android:id="@+id/image_medial_record"
-        android:layout_width="@dimen/_200sdp"
-        android:layout_height="@dimen/_200sdp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/_12sdp"
+        app:layout_constraintHeight_percent="0.60"
+        android:layout_marginEnd="@dimen/_50sdp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 

@@ -10,7 +10,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
 class GeneralCallsAndCasesViewModel
 @Inject constructor(private val retrofitClient: RetrofitClient) : ViewModel(){
@@ -107,11 +106,16 @@ class GeneralCallsAndCasesViewModel
     fun uploadMeasurement(caseId : Int
                           ,bloodPressure :String
                           , sugarAnalysis :String
+                          , tempreture :String
+                          ,fluidBalance :String
+                          , respiratoryRate :String
+                          , heartRate :String
                           , note :String) {
         _uploadMeasurementLiveData.postValue(NetworkState.LOADING)
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val data = retrofitClient.uploadMeasurement(caseId,bloodPressure , sugarAnalysis,  note)
+                val data = retrofitClient.uploadMeasurement(caseId,bloodPressure , sugarAnalysis
+                    ,tempreture,fluidBalance ,respiratoryRate,heartRate, note)
                 if (data.status == 1) {
                     _uploadMeasurementLiveData.postValue(NetworkState.getLoaded(data))
                 } else {

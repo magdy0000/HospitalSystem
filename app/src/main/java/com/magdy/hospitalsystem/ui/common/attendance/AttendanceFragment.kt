@@ -73,9 +73,23 @@ class AttendanceFragment  : BaseFragment() {
 
     }
     private fun initView (){
+
+
         binding.apply {
-            textTime.text = timeFormat.format(cal.time)
-            textTimeLeaving.text = timeFormat.format(cal.time)
+
+            if (MySharedPreferences.getUserAttended() == ""){
+                icCondation.visibilityGone()
+            }else{
+                textTime.text = MySharedPreferences.getUserAttended()
+                icCondation.visibilityVisible()
+            }
+            if (MySharedPreferences.getUserLeaving() == ""){
+                icCondationLeaving.visibilityGone()
+            }else{
+                textTimeLeaving.text  = MySharedPreferences.getUserLeaving()
+                icCondationLeaving.visibilityVisible()
+            }
+
         }
 
     }
@@ -93,6 +107,7 @@ class AttendanceFragment  : BaseFragment() {
 
                     showToast(data.message)
                     findNavController().popBackStack()
+
                     ProgressLoading.dismiss()
 
                 }
@@ -113,6 +128,10 @@ class AttendanceFragment  : BaseFragment() {
                 }
 
             btnAttendance.setOnClickListener {
+                if (MySharedPreferences.getUserAttended() != ""){
+                    showToast(getString(R.string.attended_massage))
+                    return@setOnClickListener
+                }
 
                 if (userLocation == null){
                     binding.massage.text =getString(R.string.location_warn)
@@ -122,16 +141,22 @@ class AttendanceFragment  : BaseFragment() {
                 if (distance(userLocation?.latitude!!
                         ,userLocation?.longitude!!
                         ,29.936074
-                        , 30.883889) < 2000000){// this num for location of hospital
+                        , 30.883889) > 5){// this num for location of hospital
                             binding.noteUi.visibilityVisible()
 
-                  //  return@setOnClickListener
+                   return@setOnClickListener
 
                 }
                 binding.noteUi.visibilityGone()
+                MySharedPreferences.setUserAttended(timeFormat.format(System.currentTimeMillis()))
                 attendanceViewModel.makeAttendance(Const.ATTENDANCE)
             }
             btnLeaving.setOnClickListener {
+                if (MySharedPreferences.getUserLeaving() != ""){
+                    showToast(getString(R.string.attended_massage))
+                    return@setOnClickListener
+                }
+
                 if (userLocation == null){
                     binding.massage.text =getString(R.string.location_warn)
                     binding.noteUi.visibilityVisible()
@@ -140,15 +165,16 @@ class AttendanceFragment  : BaseFragment() {
 
                 if (distance(userLocation?.latitude!!
                         ,userLocation?.longitude!!
-                        ,30.2123213
-                        ,31.132131231) < 400){
+                        ,29.936074
+                        ,30.883889) > 5){
                     binding.massage.text =getString(R.string.location_warn)
                     binding.noteUi.visibilityVisible()
 
-                //    return@setOnClickListener
+                   return@setOnClickListener
 
                 }
                 binding.noteUi.visibilityGone()
+                MySharedPreferences.setUserLeaving(timeFormat.format(System.currentTimeMillis()))
                 attendanceViewModel.makeAttendance(Const.LEAVING)
             }
         }

@@ -62,6 +62,8 @@ class ProfileFragment : BaseFragment() {
                 MySharedPreferences.setUserTOKEN("")
                 MySharedPreferences.setUserName("")
                 MySharedPreferences.setUserPhone("")
+                MySharedPreferences.setUserAttended("")
+                MySharedPreferences.setUserLeaving("")
                 MySharedPreferences.setUserType("")
                 MySharedPreferences.setUserId(0)
                 navigate(ProfileFragmentDirections.actionProfileFragmentToLoginFragment())

@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.magdy.hospitalsystem.R
 import com.magdy.hospitalsystem.data.CallsData
@@ -59,6 +60,8 @@ class AdapterRecyclerTasks : RecyclerView.Adapter<AdapterRecyclerTasks.Holder>()
                 if (list?.get(layoutPosition)?.status !=Const.STATS_TASK_DONE
                     || MySharedPreferences.getUserType() == Const.MANAGER) {
                     onUserClick?.onClick(list?.get(layoutPosition)?.id!!)
+                }else {
+                    Toast.makeText(itemView.context , itemView.context.getString(R.string.task_finish_warn) , Toast.LENGTH_LONG).show()
                 }
             }
         }

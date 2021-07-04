@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.magdy.hospitalsystem.R
 import com.magdy.hospitalsystem.adapters.AdapterRecyclerCallsDoctor
 import com.magdy.hospitalsystem.base.BaseFragment
@@ -24,6 +25,7 @@ class AllCallsFragment : BaseFragment() {
 
     private var _binding  : FragmentDoctorCallsBinding?= null
     private val binding get() = _binding!!
+    private var status = ""
     private val viewModel  : GeneralCallsAndCasesViewModel by viewModels()
     private val adapterRecyclerCallsDoctor : AdapterRecyclerCallsDoctor by lazy { AdapterRecyclerCallsDoctor() }
     override fun onCreateView(
@@ -56,6 +58,7 @@ class AllCallsFragment : BaseFragment() {
                     adapterRecyclerCallsDoctor.list  = data.data as ArrayList<CallsData>
                     binding.recyclerDoctorCalls.adapter =adapterRecyclerCallsDoctor
 
+
                     ProgressLoading.dismiss()
 
                 }
@@ -77,6 +80,11 @@ class AllCallsFragment : BaseFragment() {
                     val data = it.data as ModelCreation
 
                     showToast(data.message)
+                    if (status == Const.ACCEPT_CALL){
+                        navigate(AllCallsFragmentDirections.actionDoctorCallFragmentToDoctorAllCasesFragment())
+                    }else {
+                        findNavController().popBackStack()
+                    }
                    ProgressLoading.dismiss()
 
                 }
@@ -99,10 +107,12 @@ class AllCallsFragment : BaseFragment() {
         adapterRecyclerCallsDoctor.onUserClick = object : AdapterRecyclerCallsDoctor.OnUserClick{
             override fun onAccept(id: Int) {
 
+                status = Const.ACCEPT_CALL
                 viewModel.acceptRejectCall(id , Const.ACCEPT_CALL)
             }
 
             override fun onReject(id: Int) {
+                status = Const.REJECT_CALL
                 viewModel.acceptRejectCall(id , Const.REJECT_CALL)
             }
 

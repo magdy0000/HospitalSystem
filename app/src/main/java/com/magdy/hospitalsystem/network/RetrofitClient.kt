@@ -139,10 +139,24 @@ constructor(
     suspend fun uploadMeasurement (caseId : Int
                                    ,bloodPressure :String
                                    , sugarAnalysis :String
+                                   , tempreture :String
+                                   ,fluidBalance :String
+                                   , respiratoryRate :String
+                                   , heartRate :String
                                    , note :String
                                     ) = withContext(IO){
-        retrofitService.uploadMeasurement(caseId,bloodPressure , sugarAnalysis,  note, "done")
+        retrofitService.uploadMeasurement(caseId,bloodPressure , sugarAnalysis
+            ,tempreture,fluidBalance ,respiratoryRate,heartRate, note, "done")
     }
+
+
+
+    suspend fun sendNotification (userId  : Int
+                                  ,title : String
+                                  , body : String)= withContext(IO){
+        retrofitService.sendNotification(userId, title ,body)
+    }
+
 
 
 

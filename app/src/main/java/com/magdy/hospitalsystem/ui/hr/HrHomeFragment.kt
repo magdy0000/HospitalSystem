@@ -41,6 +41,7 @@ class HrHomeFragment : BaseFragment() {
 
     private fun initView (){
         binding.apply {
+            imageProfile.setImageResource(getImage())
             textType.text = MySharedPreferences.getUserType()
             textUserName.text  = MySharedPreferences.getUserName()
 

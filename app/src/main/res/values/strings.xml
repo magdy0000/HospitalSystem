@@ -66,13 +66,19 @@
     <string name="add_nurse">Add Nurse</string>
     <string name="request">Request</string>
     <string name="case1">Case</string>
-    <string name="select_analysis_employee">Select Analysis employee</string>
+    <string name="select_analysis_employee">Select Laboratory Physician employee</string>
     <string name="send">Send</string>
-    <string name="analysis_warn">Please add analysis name</string>
-    <string name="analysis_emp_warn">Please select analysis employee</string>
+    <string name="analysis_warn">Please add Laboratory Physician name</string>
+    <string name="analysis_emp_warn">Please select Laboratory Physician employee</string>
     <string name="medical_record">Medical Record</string>
     <string name="blood_pressure">Blood Pressure</string>
-    <string name="sugar_analysis">Sugar analysis</string>
+    <string name="sugar_analysis">Sugar measurement</string>
+
+    <string name="temp">temperature</string>
+    <string name="heart_rate">Heart rate</string>
+    <string name="fluid_balance">Fluid balance</string>
+    <string name="respiratory_rate">Respiratory rate</string>
+
     <string name="call_doctor">Call Doctor</string>
     <string name="add_measurement">Add Measurement</string>
     <string name="upload">Upload Image</string>
@@ -82,7 +88,7 @@
     <string name="todo_details">Todo Details</string>
     <string name="added">Added</string>
     <string name="task_name">Task Name</string>
-    <string name="task_description">Task Description</string>
+    <string name="task_description">Task Note</string>
     <string name="select_employee">Select Employee</string>
     <string name="add_tasks_warn">Please add tasks</string>
     <string name="report_details">Report Details</string>
@@ -90,6 +96,8 @@
     <string name="reply_manager">Reply Manager</string>
     <string name="tap_to_reply">Tap to reply</string>
     <string name="create_task">Create Task</string>
+    <string name="attended_massage">You are already register</string>
+    <string name="task_finish_warn">\"Task already finished \"</string>
 
 
     <string-array name="spinnergender">
@@ -105,7 +113,7 @@
         <item>nurse</item>
         <item>receptionist</item>
         <item>manger</item>
-        <item>analysis</item>
+        <item>laboratory Physician</item>
         <item>hr</item>
     </string-array>
 
